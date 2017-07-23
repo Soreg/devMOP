@@ -25,7 +25,7 @@ $("input[type='text']").keypress(function(event) {
 			//clear out input field
 			$(this).val("");
 			//add new li with user input
-			$("ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + "</li>");
+			$("ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
 		}
 	}
 });
