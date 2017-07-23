@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "", //decide app name
+  "version": "1.0.1",
+  "default_locale": "en",
+  "description": "turtles-team-1 extension", //decide app description
+  "icons": {
+     "64": "" //find an icon
+  },
+  "browser_action": {
+     "default_icon": "", //find an icon
+     "default_popup": "index.html"
+  },
+  
+  "background": {
+     "persistent": false,
+     "scripts": [""] //decide if we need a separate background file
+  },
+  "web_accessible_resources": ["*.ttf" ],
+  "chrome_url_overrides": {
+     "newtab": "index.html"
+  },
+  "content_scripts": [
+  {
+     "matches": ["http://*/*", "https://*/*"],
+     "js": ["assets/js/app.js"]
+  }
+  ]
+}
