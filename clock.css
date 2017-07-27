@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  background-color: darkgrey;
+  background-image: url("http://www.s3forums.com/forum/attachments/galaxy-s3-graphics/11091d1396588914-share-your-wallpaper-27711-small-forest-waterfall-1920x1080-nature-wallpaper.jpg");
+  height: 100vh;
+  background-size: cover;
+  color:#19194d;
+  text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    1px 1px 0 white;
+  font-family: 'Roboto', serif;
+}
+
+h1 {
+  font-size: 72px;
+  margin: 50px 0;
+}
+
+#hour,#minute {
+  font-size: 104px;
+}
+#second {
+  font-size: 72px;
+}
