@@ -1,0 +1,7 @@
+/*
+  Please don't: Target default tags ex. "div", "h2" or "section".
+  Please don't: Change style that will effect the overall look of the program (background-color etc.)
+
+  Please do: Target defined tags ex. "#feature1", "#feature1 h2", "feature1 .div1" etc.
+  Please do: Change style that is needed to 'divide' specific elements (ex. margin, text-align etc.)
+*/
