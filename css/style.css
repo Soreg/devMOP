@@ -9,6 +9,81 @@
 
 /* Todo styles */
 
+#todosHeader {
+	background-color: #4c0001;
+	color: white;
+	margin: 0;
+	padding: 10px 20px;
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: normal; /*h1 by default is bolded*/
+}
+
+.fa-plus {
+	float: right;
+}
+
+input {
+	font-size: 18px;
+	background-color: #f7f7f7;
+	color: #070000;
+	width: 100%; /*100% width includes only the content, not the padding or margin, so we'll use box-sizing below*/
+	padding: 13px 13px 13px 20px;
+	box-sizing: border-box;
+	border: 3px solid rgba(0,0,0,0);/*an invisile border that will hide a small gap between input and ul that takes up same space as the border when focused*/
+}
+
+input:focus {/*when clicking on box to type*/
+	background: white;
+	border: 3px solid #4c0001;
+	outline: none;/*take off default highlight (when focussing on input box)*/
+}
+
+ul {
+	list-style: none;/*get rid of default bullet points*/
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	background-color: #fff;
+	height: 40px;
+	line-height: 40px;/*text centered vertically*/
+	color: #666;
+}
+
+li:nth-child(2n) {
+	background-color: #f7f7f7;
+}
+
+span {
+	background-color: #4C0001;
+	color: white;
+	height: 40px;/*needed?*/
+	margin-right: 20px;
+	text-align: center;
+	width: 0;
+	display: inline-block;
+	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
+}
+
+li:hover span {/*hover over li (since now span is for width: 0px)*/
+	width: 40px;
+	transition: 0.2s linear;
+	opacity: 1.0;/*show icon only when hovering*/
+}
+
+#todos {
+	font-family: Roboto;
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
+.completed {
+	color: gray;
+	text-decoration: line-through;
+}
 
 
 /* Weather styles */
