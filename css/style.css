@@ -16,3 +16,9 @@
 
 
 /* Clock styles */
+#hour,#minute {
+  font-size: 104px;
+}
+#second {
+  font-size: 72px;
+}
