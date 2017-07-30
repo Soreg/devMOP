@@ -91,3 +91,9 @@ li:hover span {/*hover over li (since now span is for width: 0px)*/
 
 
 /* Clock styles */
+#hour,#minute {
+  font-size: 104px;
+}
+#second {
+  font-size: 72px;
+}
