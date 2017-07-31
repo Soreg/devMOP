@@ -1,0 +1,31 @@
+body {
+  background: no-repeat center center fixed;
+  background-size: cover;
+}
+div.container {
+  padding-left: 15%;
+  padding-top: 5%;
+  width: 70%;
+  margin-left: 20%;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 100px;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+#geoloc {
+  margin-left: 15%;
+}
+#weather_temp {
+  margin-left: 20%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+#convertemp {
+  margin-left: 40%;
+}
