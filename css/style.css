@@ -6,6 +6,11 @@
   Please do: Change style that is needed to 'divide' specific elements (ex. margin, text-align etc.)
 */
 
+/* Overall */
+
+.clear {
+	clear: both;
+}
 
 /* Todo styles */
 
@@ -116,6 +121,14 @@ div.myContainer {
 }
 
 /* Clock styles */
+#hour, #minute, #second {
+	opacity: 1;
+	color: black;
+	display: inline;
+	background: none;
+	margin: 0 auto;
+}
+
 #hour,#minute {
   font-size: 104px;
 }
