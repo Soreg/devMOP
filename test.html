@@ -6,6 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <!-- Libraries or frameworks here -->
+  <!-- jQuery library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Theme CSS -->
   <link rel="stylesheet" href="css/style.css">
   <!-- Custom Fonts -->
@@ -25,7 +31,15 @@
   </div>
 
   <!-- Weather -->
-
+<div class="myContainer">
+    <h1> The temperature now in:   <p id = "geoloc"> </p>
+</h1>
+    <div id="weather_temp">
+      <p id="temp"></p>
+      <p id="weather"></p>
+    </div>
+  </div>
+  <button id="convertemp"> <b> Click to convert </b> </button>
 
   <!-- Clock -->
   <h1 class="text-center">Local Time</h1>
