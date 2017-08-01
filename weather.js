@@ -19,48 +19,6 @@ $(document).ready(function() {
         $("#geoloc").html(timezone);
         $("#temp").html(temp + "°F");
         $("#weather").html("With: " + weather + " weather");
-        if (ID === ("clear-day" || "clear-night")) {
-          $("body").css(
-            "background-image",
-            "url(https://images.pexels.com/photos/530642/pexels-photo-530642.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"
-          );
-        } else if (ID === ("partly-cloudy-day" || "partly-cloudy-night")) {
-          $("body").css(
-            "background-image",
-            "url(https://images.pexels.com/photos/530736/pexels-photo-530736.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"
-          );
-        } else if (ID === "wind") {
-          $("body").css(
-            "background-image",
-            "url(https://static.pexels.com/photos/358463/pexels-photo-358463.jpeg)"
-          );
-        } else if (ID === "rain") {
-          $("body").css(
-            "background-image",
-            "url(https://static.pexels.com/photos/125510/pexels-photo-125510.jpeg)"
-          );
-        } else if (ID === ("thunderstorm" || "tornado")) {
-          $("body").css(
-            "background-image",
-            "url(https://images.pexels.com/photos/530215/pexels-photo-530215.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"
-          );
-        } else if (ID === ("snow" || "hail" || "sleet")) {
-          $("body").css(
-            "background-image",
-            "url(https://images.pexels.com/photos/235621/pexels-photo-235621.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"
-          );
-        } else if (ID === ("fog" || "cloudy")) {
-          $("body").css(
-            "background-image",
-            "url(https://static.pexels.com/photos/5230/road-fog-foggy-mist.jpg)"
-          );
-        } else {
-          $("body").css(
-            "background-image",
-            "url(https://images.pexels.com/photos/530642/pexels-photo-530642.jpeg?w=940&h=650&auto=compress&cs=tinysrgb)"
-          );
-        }
-
         $("#convertemp").on("click", function() {
           if (degC === true) {
             degC = false;
