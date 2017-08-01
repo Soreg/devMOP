@@ -1,8 +1,4 @@
-body {
-  background: no-repeat center center fixed;
-  background-size: cover;
-}
-div.container {
+div.myContainer {
   padding-left: 15%;
   padding-top: 5%;
   width: 70%;
