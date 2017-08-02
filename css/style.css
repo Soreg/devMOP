@@ -138,16 +138,25 @@ div.myContainer {
 
 
 /* Greet user */
+.greeting span {
+	opacity: 1;
+	color: black;
+	width: auto;
+	background: none;
+	display: inline;
+	font-size: 2em;
+	font-weight: bold;
+}
+
 #user {
 	border: none;
-	width: 50%;
 	margin: 0 auto;
 	border-radius: 5px;
 	background-color: #cce6ff;
 	transition: background-color .3s ease-in-out;
 }
 #user:focus {
-	background-color: #99ceff;
+	background-color: #b3daff;
 }
 
 
