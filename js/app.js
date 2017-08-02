@@ -100,7 +100,16 @@ setInterval(getTime, 1000);
 
 
 // Greet user
+var currentHour = new Date().getHours();
+var greetMessage = "Good day";
 
+if(currentHour >= 00 && currentHour < 12 ) {
+		greetMessage = "Good morning";
+} else if (currentHour >= 12 && currentHour < 17) {
+	greetMessage = "Good afternoon";
+} else if (currentHour >= 17 && currentHour < 24) {
+	greetMessage = "Good evening";
+}
 
 // Quotes
 
