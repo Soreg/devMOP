@@ -97,3 +97,12 @@ function getTime() {
 }
 
 setInterval(getTime, 1000);
+
+
+// Greet user
+
+
+// Quotes
+
+
+// Motivation button
