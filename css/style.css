@@ -138,7 +138,17 @@ div.myContainer {
 
 
 /* Greet user */
-
+#user {
+	border: none;
+	width: 50%;
+	margin: 0 auto;
+	border-radius: 5px;
+	background-color: #cce6ff;
+	transition: background-color .3s ease-in-out;
+}
+#user:focus {
+	background-color: #99ceff;
+}
 
 
 /* Quotes */
