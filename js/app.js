@@ -9,12 +9,12 @@
 //Note: could change jQuery to vanilla if that's what we agree on using globally
 
 //Check off specific todos by clicking
-$("ul").on("click", "li", function() {
+$("#todos ul").on("click", "li", function() {
 	$(this).toggleClass("completed");
 });
 
 // Click on icon to delete todo
-$("ul").on("click", "span", function(event) {
+$("#todos ul").on("click", "span", function(event) {
 	$(this).parent().fadeOut(function() {
 		//remove li only once the fadeOut finishes
 		$(this).remove;
@@ -24,7 +24,7 @@ $("ul").on("click", "span", function(event) {
 });
 
 //Add new todo
-$("input[type='text']").keypress(function(event) {
+$("#todos input[type='text']").keypress(function(event) {
 	if (event.which === 13) {
 		//make sure text is not empty
 		if($(this).val() !== "") {
@@ -33,13 +33,13 @@ $("input[type='text']").keypress(function(event) {
 			//clear out input field
 			$(this).val("");
 			//add new li with user input
-			$("ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
+			$("#todos ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
 		}
 	}
 });
 
-$(".fa-plus").click(function() {
-	$("input[type='text']").fadeToggle();
+$("#todos .fa-plus").click(function() {
+	$("#todos input").fadeToggle();
 });
 
 
