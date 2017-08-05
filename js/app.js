@@ -104,12 +104,23 @@ var currentHour = new Date().getHours();
 var greetMessage = "Good day";
 
 if(currentHour >= 00 && currentHour < 12 ) {
-		greetMessage = "Good morning";
+		greetMessage = "Good Morning";
 } else if (currentHour >= 12 && currentHour < 17) {
-	greetMessage = "Good afternoon";
+	greetMessage = "Good Afternoon";
 } else if (currentHour >= 17 && currentHour < 24) {
-	greetMessage = "Good evening";
+	greetMessage = "Good Evening";
 }
+
+$("#user").on("keydown",function name(e) {
+    if(e.keyCode == 13) {
+			var user = this.value;
+			$('#name').fadeOut('normal', function() {
+				$("#name").css("font-style", "italic");
+		    $('#name').html(greetMessage + ", " + user);
+		    $('#name').fadeIn('normal');
+			});
+    }
+});
 
 // Quotes
 
