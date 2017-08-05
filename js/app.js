@@ -123,6 +123,15 @@ $("#user").on("keydown",function name(e) {
 });
 
 // Quotes
-
+$.ajax({
+  type: 'GET',
+  url: 'http://quotes.stormconsultancy.co.uk/random.json',
+  success: function(resp) {
+    $('#quote').html(`"${resp.quote}" ${resp.author}`);
+  },
+  error: function() {
+    console.log('error getting quote');
+  }
+});
 
 // Motivation button
