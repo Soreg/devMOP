@@ -12,8 +12,90 @@
 	clear: both;
 }
 
-/* Todo styles */
+/* Greet user */
+.greeting span {
+	opacity: 1;
+	color: black;
+	width: auto;
+	background: none;
+	display: inline;
+	font-size: 2em;
+	font-weight: bold;
+}
 
+#user {
+	border: none;
+	margin: 0 auto;
+	border-radius: 5px;
+	background-color: #cce6ff;
+	transition: background-color .3s ease-in-out;
+}
+#user:focus {
+	background-color: #b3daff;
+}
+
+
+/* Clock styles */
+#hour, #minute, #second {
+	opacity: 1;
+	color: black;
+	display: inline;
+	background: none;
+	margin: 0 auto;
+}
+
+#hour,#minute {
+  font-size: 104px;
+}
+#second {
+  font-size: 72px;
+}
+
+
+/* Weather styles */
+div.myContainer {
+  padding-left: 15%;
+  padding-top: 5%;
+  width: 70%;
+  margin-left: 20%;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  background-color: #ffffff;
+  border: 1px solid black;
+  border-radius: 100px;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+#geoloc {
+  margin-left: 15%;
+}
+#weather_temp {
+  margin-left: 20%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+#convertemp {
+  margin-left: 40%;
+}
+
+
+/* Motivation button */
+
+a:link, visited, hover, active {
+  text-decoration: none;
+}
+#mediumArticle{
+  border-radius: 20%;
+  width: 400px;
+  font-size: 18px;
+  margin: 10px;
+  padding: 5px;
+}
+
+/* Todo styles */
 #todos h1 {
 	background-color: #4c0001;
 	color: white;
@@ -91,87 +173,6 @@
 }
 
 
-/* Weather styles */
-div.myContainer {
-  padding-left: 15%;
-  padding-top: 5%;
-  width: 70%;
-  margin-left: 20%;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  background-color: #ffffff;
-  border: 1px solid black;
-  border-radius: 100px;
-  opacity: 0.6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
-}
-#geoloc {
-  margin-left: 15%;
-}
-#weather_temp {
-  margin-left: 20%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 900;
-}
-
-#convertemp {
-  margin-left: 40%;
-}
-
-/* Clock styles */
-#hour, #minute, #second {
-	opacity: 1;
-	color: black;
-	display: inline;
-	background: none;
-	margin: 0 auto;
-}
-
-#hour,#minute {
-  font-size: 104px;
-}
-#second {
-  font-size: 72px;
-}
-
-
-/* Greet user */
-.greeting span {
-	opacity: 1;
-	color: black;
-	width: auto;
-	background: none;
-	display: inline;
-	font-size: 2em;
-	font-weight: bold;
-}
-
-#user {
-	border: none;
-	margin: 0 auto;
-	border-radius: 5px;
-	background-color: #cce6ff;
-	transition: background-color .3s ease-in-out;
-}
-#user:focus {
-	background-color: #b3daff;
-}
-
-
 /* Quotes */
 
 
-
-/* Motivation button */
-a:link, visited, hover, active {
-  text-decoration: none;
-}
-#mediumArticle{
-  border-radius: 20%;
-  width: 400px;
-  font-size: 18px;
-  margin: 10px;
-  padding: 5px;
-}
