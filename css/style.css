@@ -77,11 +77,13 @@ div.myContainer {
 
 
 /* Motivation button */
+.article {}
 
-a:link, visited, hover, active {
-  text-decoration: none;
+.article__link:link, visited, hover, active {
+	text-decoration: none;
 }
-#mediumArticle{
+
+.article__button {
   border-radius: 20%;
   width: 400px;
   font-size: 18px;
@@ -89,7 +91,15 @@ a:link, visited, hover, active {
   padding: 5px;
 }
 
+
 /* Todo styles */
+.todos {
+	font-family: Roboto;
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
 .todos__title {
 	background-color: #4c0001;
 	color: white;
@@ -100,6 +110,7 @@ a:link, visited, hover, active {
 	font-weight: normal; /*h1 by default is bolded*/
 }
 
+/**TO FIX**/
 .todos .fa-plus {
 	float: right;
 }
@@ -137,6 +148,7 @@ a:link, visited, hover, active {
 	background-color: #f7f7f7;
 }
 
+/**TO FIX**/
 .todos span {
 	background-color: #4C0001;
 	color: white;
@@ -148,17 +160,11 @@ a:link, visited, hover, active {
 	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
 }
 
+/**TO FIX**/
 .todos__list-item:hover span {/*hover over li (since now span is for width: 0px)*/
 	width: 40px;
 	transition: 0.2s linear;
 	opacity: 1.0;/*show icon only when hovering*/
-}
-
-.todos {
-	font-family: Roboto;
-	float: left;
-	margin: 0;
-	width: 33%;
 }
 
 .todos__list-item--completed {

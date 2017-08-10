@@ -169,10 +169,10 @@ $(document).ready(function() {
         "https://medium.freecodecamp.org/how-i-learned-to-code-and-earned-a-job-in-silicon-valley-changing-my-life-along-the-way-a3af854855fa"
     }
   ];
-  $("#mediumArticle").on("click", function() {
+  $(".article__button").on("click", function() {
     var randomArticle = articles[Math.floor(Math.random() * articles.length)];
-    $("#displayArticle").html(
-      '<a target="_blank" href = ' +
+    $(".article__display").html(
+      '<a class="article__link" target="_blank" href = ' +
         randomArticle.link +
         ">" +
         randomArticle.article +
