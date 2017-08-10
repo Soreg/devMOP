@@ -1,16 +1,10 @@
-/*
-  Please don't: Target default tags ex. "div", "h2" or "section".
-  Please don't: Change style that will effect the overall look of the program (background-color etc.)
+/* CSS architecture: BEM methodology - Block, Element, Modifier
 
-  Please do: Target defined tags ex. "#feature1", "#feature1 h2", "feature1 .div1" etc.
-  Please do: Change style that is needed to 'divide' specific elements (ex. margin, text-align etc.)
-*/
+	.block represents the higher level of an abstraction or component
+	.block__element represents a descendent of .block that helps form .block as a whole
+	.block--modifier represents a different state or version of .block
 
-/* Overall */
-
-.clear {
-	clear: both;
-}
+ */
 
 /* Greet user */
 .greeting span {
@@ -174,5 +168,7 @@ a:link, visited, hover, active {
 
 
 /* Quotes */
-
+.quote {}
+.quote__text {}
+.quote__author {}
 
