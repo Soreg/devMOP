@@ -47,7 +47,7 @@
 
 
 /* Weather styles */
-div.myContainer {
+.weather {
   padding-left: 15%;
   padding-top: 5%;
   width: 70%;
@@ -60,10 +60,10 @@ div.myContainer {
   opacity: 0.6;
   filter: alpha(opacity=60); /* For IE8 and earlier */
 }
-#geoloc {
+.weather__loc {
   margin-left: 15%;
 }
-#weather_temp {
+.weather__box {
   margin-left: 20%;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -71,7 +71,7 @@ div.myContainer {
   font-weight: 900;
 }
 
-#convertemp {
+.weather__convert {
   margin-left: 40%;
 }
 

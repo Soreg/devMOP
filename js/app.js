@@ -65,16 +65,16 @@ $(document).ready(function() {
         var ID = data.currently.icon;
         var timezone = data.timezone;
 
-        $("#geoloc").html(timezone);
-        $("#temp").html(temp + "°F");
-        $("#weather").html("With: " + weather + " weather");
-        $("#convertemp").on("click", function() {
+        $(".weather__loc").html(timezone);
+        $(".weather__temp").html(temp + "°F");
+        $(".weather__descr").html("With: " + weather + " weather");
+        $(".weather__convert").on("click", function() {
           if (degC === true) {
             degC = false;
-            $("#temp").html(temp + "\xB0F");
+            $(".weather__temp").html(temp + "\xB0F");
           } else {
             degC = true;
-            $("#temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
+            $(".weather__temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
           }
         });
       });
