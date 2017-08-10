@@ -90,7 +90,7 @@ a:link, visited, hover, active {
 }
 
 /* Todo styles */
-#todos h1 {
+.todos__title {
 	background-color: #4c0001;
 	color: white;
 	margin: 0;
@@ -100,11 +100,11 @@ a:link, visited, hover, active {
 	font-weight: normal; /*h1 by default is bolded*/
 }
 
-#todos .fa-plus {
+.todos .fa-plus {
 	float: right;
 }
 
-#todos input {
+.todos__input {
 	font-size: 18px;
 	background-color: #f7f7f7;
 	color: #070000;
@@ -114,30 +114,30 @@ a:link, visited, hover, active {
 	border: 3px solid rgba(0,0,0,0);/*an invisile border that will hide a small gap between input and ul that takes up same space as the border when focused*/
 }
 
-#todos input:focus {/*when clicking on box to type*/
+.todos__input:focus {/*when clicking on box to type*/
 	background: white;
 	border: 3px solid #4c0001;
 	outline: none;/*take off default highlight (when focussing on input box)*/
 }
 
-#todos ul {
+.todos__ulist {
 	list-style: none;/*get rid of default bullet points*/
 	margin: 0;
 	padding: 0;
 }
 
-#todos li {
+.todos__list-item {
 	background-color: #fff;
 	height: 40px;
 	line-height: 40px;/*text centered vertically*/
 	color: #666;
 }
 
-#todos li:nth-child(2n) {
+.todos__list-item:nth-child(2n) {
 	background-color: #f7f7f7;
 }
 
-#todos span {
+.todos span {
 	background-color: #4C0001;
 	color: white;
 	height: 40px;/*needed?*/
@@ -148,20 +148,20 @@ a:link, visited, hover, active {
 	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
 }
 
-#todos li:hover span {/*hover over li (since now span is for width: 0px)*/
+.todos__list-item:hover span {/*hover over li (since now span is for width: 0px)*/
 	width: 40px;
 	transition: 0.2s linear;
 	opacity: 1.0;/*show icon only when hovering*/
 }
 
-#todos {
+.todos {
 	font-family: Roboto;
 	float: left;
 	margin: 0;
 	width: 33%;
 }
 
-#todos .completed {
+.todos__list-item--completed {
 	color: gray;
 	text-decoration: line-through;
 }

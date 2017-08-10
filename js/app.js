@@ -185,12 +185,12 @@ $(document).ready(function() {
 //================== Todo ==================
 
 //Check off specific todos by clicking
-$("#todos ul").on("click", "li", function() {
-  $(this).toggleClass("completed");
+$(".todos__ulist").on("click", ".todos__list-item", function() {
+  $(this).toggleClass("todos__list-item--completed");
 });
 
 // Click on icon to delete todo
-$("#todos ul").on("click", "span", function(event) {
+$(".todos__ulist").on("click", "span", function(event) {
   $(this).parent().fadeOut(function() {
     //remove li only once the fadeOut finishes
     $(this).remove;
@@ -200,7 +200,7 @@ $("#todos ul").on("click", "span", function(event) {
 });
 
 //Add new todo
-$("#todos input[type='text']").keypress(function(event) {
+$(".todos__input").keypress(function(event) {
   if (event.which === 13) {
     //make sure text is not empty
     if($(this).val() !== "") {
@@ -209,13 +209,13 @@ $("#todos input[type='text']").keypress(function(event) {
       //clear out input field
       $(this).val("");
       //add new li with user input
-      $("#todos ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
+      $(".todos__ulist").append("<li class='todos__list-item'><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
     }
   }
 });
 
-$("#todos .fa-plus").click(function() {
-  $("#todos input").fadeToggle();
+$(".todos .fa-plus").click(function() {
+  $(".todos__input").fadeToggle();
 });
 
 
@@ -224,7 +224,9 @@ $.ajax({
   type: 'GET',
   url: 'http://quotes.stormconsultancy.co.uk/random.json',
   success: function(resp) {
-    $('#quote').html(`"${resp.quote}" ${resp.author}`);
+    $('.quote__text').html(`"${resp.quote}"`);
+    $('.quote__author').html(`<em>${resp.author}</em>`);
+
   },
   error: function() {
     console.log('error getting quote');
