@@ -19,50 +19,47 @@
 <body>
 
   <!-- Greet user + name -->
-  <div class="clear"></div>
-  <div class="container text-center greeting">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-8 col-xs-offset-2">
-        <span id="name">What is your name: <input id="user" class="center-block" type="text"></span>
-      </div>
-    </div>
+  <div class="greet">
+    <span class="greet_name">What is your name: <input class="greet__input" type="text"></span>
   </div>
 
   <!-- Clock -->
-  <div class="clear"></div>
-  <h1 class="text-center">Local Time</h1>
-  <span id="hour">24 : </span>
-  <span id="minute">00 : </span>
-  <span id="second">00</span>
+  <div class="clock">
+    <h1 class="clock__title">Local Time</h1>
+    <span class="clock__hour">24 : </span>
+    <span class="clock__minute">00 : </span>
+    <span class="clock__second">00</span>
+  </div>
 
  <!-- Weather -->
-  <div class="clear"></div>
-  <div class="myContainer">
-    <h1> The temperature now in:   <p id = "geoloc"> </p>
+  <div class="weather">
+    <h1> The temperature now in:   <p class="weather__loc"> </p>
     </h1>
-    <div id="weather_temp">
-      <p id="temp"></p>
-      <p id="weather"></p>
+    <div class="weather__box">
+      <p class="weather__temp"></p>
+      <p class="weather__descr"></p>
     </div>
   </div>
-  <button id="convertemp"> <b> Click to convert </b> </button>
+  <button class="weather__convert"> <b> Click to convert </b> </button>
 
   <!-- Motivation button -->
-  <div class="clear"></div>
-  <button id="mediumArticle"> Get inspired! Click to get your article of the day</button>
-  <div id="displayArticle"> </div>
+  <div class="article">
+    <button class="article__button"> Get inspired! Click to get your article of the day</button>
+    <div class="article__display"> </div>
+  </div>
 
   <!-- Todo -->
-  <div id="todos">
-    <h1>Todos <i class="fa fa-plus" aria-hidden="true"></i></h1>
-    <input type="text" placeholder="Add a task">
-    <ul></ul>
+  <div class="todos">
+    <h1 class="todos__title">Todos <i class="fa fa-plus" aria-hidden="true"></i></h1>
+    <input class="todos__input" type="text" placeholder="Add a task">
+    <ul class="todos__ulist"></ul>
   </div>
 
   <!-- Quotes -->
-  <div class="clear"></div>
-  <div id="quote"></div>
-
+  <div class="quote">
+    <div class="quote__text"></div>
+    <div class="quote__author"></div>
+  </div>
 
   <!-- Libraries or frameworks here -->
   <!-- jQuery library -->

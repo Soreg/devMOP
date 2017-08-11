@@ -1,19 +1,17 @@
-/*
-  Please don't: Target default tags ex. "div", "h2" or "section".
-  Please don't: Change style that will effect the overall look of the program (background-color etc.)
+/* CSS architecture: BEM methodology - Block, Element, Modifier
 
-  Please do: Target defined tags ex. "#feature1", "#feature1 h2", "feature1 .div1" etc.
-  Please do: Change style that is needed to 'divide' specific elements (ex. margin, text-align etc.)
-*/
+	.block represents the higher level of an abstraction or component
+	.block__element represents a descendent of .block that helps form .block as a whole
+	.block--modifier represents a different state or version of .block
 
-/* Overall */
-
-.clear {
-	clear: both;
-}
+ */
 
 /* Greet user */
-.greeting span {
+.greet {
+	text-align: center;
+}
+
+.greet_name {
 	opacity: 1;
 	color: black;
 	width: auto;
@@ -23,20 +21,28 @@
 	font-weight: bold;
 }
 
-#user {
+.greet__input {
+	display:block; /*bootstrap center-block*/
+	margin-right:auto; /*bootstrap center-block*/
+	margin-left:auto; /*bootstrap center-block*/
 	border: none;
 	margin: 0 auto;
 	border-radius: 5px;
 	background-color: #cce6ff;
 	transition: background-color .3s ease-in-out;
 }
-#user:focus {
+
+.greet__input:focus {
 	background-color: #b3daff;
 }
 
 
 /* Clock styles */
-#hour, #minute, #second {
+.clock__title {
+	text-align: center;
+}
+
+.clock__hour, .clock__minute, .clock__second {
 	opacity: 1;
 	color: black;
 	display: inline;
@@ -44,16 +50,17 @@
 	margin: 0 auto;
 }
 
-#hour,#minute {
+.clock__hour, .clock__minute {
   font-size: 104px;
 }
-#second {
+
+.clock__second {
   font-size: 72px;
 }
 
 
 /* Weather styles */
-div.myContainer {
+.weather {
   padding-left: 15%;
   padding-top: 5%;
   width: 70%;
@@ -66,10 +73,10 @@ div.myContainer {
   opacity: 0.6;
   filter: alpha(opacity=60); /* For IE8 and earlier */
 }
-#geoloc {
+.weather__loc {
   margin-left: 15%;
 }
-#weather_temp {
+.weather__box {
   margin-left: 20%;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -77,17 +84,19 @@ div.myContainer {
   font-weight: 900;
 }
 
-#convertemp {
+.weather__convert {
   margin-left: 40%;
 }
 
 
 /* Motivation button */
+.article {}
 
-a:link, visited, hover, active {
-  text-decoration: none;
+.article__link:link, visited, hover, active {
+	text-decoration: none;
 }
-#mediumArticle{
+
+.article__button {
   border-radius: 20%;
   width: 400px;
   font-size: 18px;
@@ -95,8 +104,16 @@ a:link, visited, hover, active {
   padding: 5px;
 }
 
+
 /* Todo styles */
-#todos h1 {
+.todos {
+	font-family: Roboto;
+	float: left;
+	margin: 0;
+	width: 33%;
+}
+
+.todos__title {
 	background-color: #4c0001;
 	color: white;
 	margin: 0;
@@ -106,11 +123,12 @@ a:link, visited, hover, active {
 	font-weight: normal; /*h1 by default is bolded*/
 }
 
-#todos .fa-plus {
+/**TO FIX**/
+.todos .fa-plus {
 	float: right;
 }
 
-#todos input {
+.todos__input {
 	font-size: 18px;
 	background-color: #f7f7f7;
 	color: #070000;
@@ -120,30 +138,31 @@ a:link, visited, hover, active {
 	border: 3px solid rgba(0,0,0,0);/*an invisile border that will hide a small gap between input and ul that takes up same space as the border when focused*/
 }
 
-#todos input:focus {/*when clicking on box to type*/
+.todos__input:focus {/*when clicking on box to type*/
 	background: white;
 	border: 3px solid #4c0001;
 	outline: none;/*take off default highlight (when focussing on input box)*/
 }
 
-#todos ul {
+.todos__ulist {
 	list-style: none;/*get rid of default bullet points*/
 	margin: 0;
 	padding: 0;
 }
 
-#todos li {
+.todos__list-item {
 	background-color: #fff;
 	height: 40px;
 	line-height: 40px;/*text centered vertically*/
 	color: #666;
 }
 
-#todos li:nth-child(2n) {
+.todos__list-item:nth-child(2n) {
 	background-color: #f7f7f7;
 }
 
-#todos span {
+/**TO FIX**/
+.todos span {
 	background-color: #4C0001;
 	color: white;
 	height: 40px;/*needed?*/
@@ -154,25 +173,21 @@ a:link, visited, hover, active {
 	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
 }
 
-#todos li:hover span {/*hover over li (since now span is for width: 0px)*/
+/**TO FIX**/
+.todos__list-item:hover span {/*hover over li (since now span is for width: 0px)*/
 	width: 40px;
 	transition: 0.2s linear;
 	opacity: 1.0;/*show icon only when hovering*/
 }
 
-#todos {
-	font-family: Roboto;
-	float: left;
-	margin: 0;
-	width: 33%;
-}
-
-#todos .completed {
+.todos__list-item--completed {
 	color: gray;
 	text-decoration: line-through;
 }
 
 
 /* Quotes */
-
+.quote {}
+.quote__text {}
+.quote__author {}
 

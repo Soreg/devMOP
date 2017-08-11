@@ -1,8 +1,3 @@
-/*
-  Add respective JS here.
-  Please don't target default tags like "h2".
-  Instead, target defined tags, ex. "#feature1Heading"
-*/
 
 //================== Greet user ==================
 var currentHour = new Date().getHours();
@@ -16,13 +11,13 @@ if(currentHour >= 00 && currentHour < 12 ) {
   greetMessage = "Good Evening";
 }
 
-$("#user").on("keydown",function name(e) {
+$(".greet__input").on("keydown",function name(e) {
     if(e.keyCode == 13) {
       var user = this.value;
-      $('#name').fadeOut('normal', function() {
-        $("#name").css("font-style", "italic");
-        $('#name').html(greetMessage + ", " + user);
-        $('#name').fadeIn('normal');
+      $('.greet_name').fadeOut('normal', function() {
+        $(".greet_name").css("font-style", "italic");
+        $('.greet_name').html(greetMessage + ", " + user);
+        $('.greet_name').fadeIn('normal');
       });
     }
 });
@@ -38,9 +33,9 @@ function getTime() {
   var hours = "0" + now.getHours();
 
   //change html clock time
-  document.getElementById('second').innerHTML = seconds.slice(-2);
-  document.getElementById('minute').innerHTML = minutes.slice(-2) + " : ";
-  document.getElementById('hour').innerHTML = hours.slice(-2) + " : ";
+  document.querySelector('.clock__second').innerHTML = seconds.slice(-2);
+  document.querySelector('.clock__minute').innerHTML = minutes.slice(-2) + " : ";
+  document.querySelector('.clock__hour').innerHTML = hours.slice(-2) + " : ";
 }
 
 setInterval(getTime, 1000);
@@ -65,16 +60,16 @@ $(document).ready(function() {
         var ID = data.currently.icon;
         var timezone = data.timezone;
 
-        $("#geoloc").html(timezone);
-        $("#temp").html(temp + "°F");
-        $("#weather").html("With: " + weather + " weather");
-        $("#convertemp").on("click", function() {
+        $(".weather__loc").html(timezone);
+        $(".weather__temp").html(temp + "°F");
+        $(".weather__descr").html("With: " + weather + " weather");
+        $(".weather__convert").on("click", function() {
           if (degC === true) {
             degC = false;
-            $("#temp").html(temp + "\xB0F");
+            $(".weather__temp").html(temp + "\xB0F");
           } else {
             degC = true;
-            $("#temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
+            $(".weather__temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
           }
         });
       });
@@ -169,10 +164,10 @@ $(document).ready(function() {
         "https://medium.freecodecamp.org/how-i-learned-to-code-and-earned-a-job-in-silicon-valley-changing-my-life-along-the-way-a3af854855fa"
     }
   ];
-  $("#mediumArticle").on("click", function() {
+  $(".article__button").on("click", function() {
     var randomArticle = articles[Math.floor(Math.random() * articles.length)];
-    $("#displayArticle").html(
-      '<a target="_blank" href = ' +
+    $(".article__display").html(
+      '<a class="article__link" target="_blank" href = ' +
         randomArticle.link +
         ">" +
         randomArticle.article +
@@ -185,12 +180,12 @@ $(document).ready(function() {
 //================== Todo ==================
 
 //Check off specific todos by clicking
-$("#todos ul").on("click", "li", function() {
-  $(this).toggleClass("completed");
+$(".todos__ulist").on("click", ".todos__list-item", function() {
+  $(this).toggleClass("todos__list-item--completed");
 });
 
 // Click on icon to delete todo
-$("#todos ul").on("click", "span", function(event) {
+$(".todos__ulist").on("click", "span", function(event) {
   $(this).parent().fadeOut(function() {
     //remove li only once the fadeOut finishes
     $(this).remove;
@@ -200,7 +195,7 @@ $("#todos ul").on("click", "span", function(event) {
 });
 
 //Add new todo
-$("#todos input[type='text']").keypress(function(event) {
+$(".todos__input").keypress(function(event) {
   if (event.which === 13) {
     //make sure text is not empty
     if($(this).val() !== "") {
@@ -209,13 +204,13 @@ $("#todos input[type='text']").keypress(function(event) {
       //clear out input field
       $(this).val("");
       //add new li with user input
-      $("#todos ul").append("<li><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
+      $(".todos__ulist").append("<li class='todos__list-item'><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
     }
   }
 });
 
-$("#todos .fa-plus").click(function() {
-  $("#todos input").fadeToggle();
+$(".todos .fa-plus").click(function() {
+  $(".todos__input").fadeToggle();
 });
 
 
@@ -224,7 +219,9 @@ $.ajax({
   type: 'GET',
   url: 'http://quotes.stormconsultancy.co.uk/random.json',
   success: function(resp) {
-    $('#quote').html(`"${resp.quote}" ${resp.author}`);
+    $('.quote__text').html(`"${resp.quote}"`);
+    $('.quote__author').html(`<em>${resp.author}</em>`);
+
   },
   error: function() {
     console.log('error getting quote');
