@@ -1,8 +1,3 @@
-/*
-  Add respective JS here.
-  Please don't target default tags like "h2".
-  Instead, target defined tags, ex. "#feature1Heading"
-*/
 
 //================== Greet user ==================
 var currentHour = new Date().getHours();
@@ -16,13 +11,13 @@ if(currentHour >= 00 && currentHour < 12 ) {
   greetMessage = "Good Evening";
 }
 
-$("#user").on("keydown",function name(e) {
+$(".greet__input").on("keydown",function name(e) {
     if(e.keyCode == 13) {
       var user = this.value;
-      $('#name').fadeOut('normal', function() {
-        $("#name").css("font-style", "italic");
-        $('#name').html(greetMessage + ", " + user);
-        $('#name').fadeIn('normal');
+      $('.greet_name').fadeOut('normal', function() {
+        $(".greet_name").css("font-style", "italic");
+        $('.greet_name').html(greetMessage + ", " + user);
+        $('.greet_name').fadeIn('normal');
       });
     }
 });

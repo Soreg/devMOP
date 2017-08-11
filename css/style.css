@@ -7,7 +7,11 @@
  */
 
 /* Greet user */
-.greeting span {
+.greet {
+	text-align: center;
+}
+
+.greet_name {
 	opacity: 1;
 	color: black;
 	width: auto;
@@ -17,14 +21,18 @@
 	font-weight: bold;
 }
 
-#user {
+.greet__input {
+	display:block; /*bootstrap center-block*/
+	margin-right:auto; /*bootstrap center-block*/
+	margin-left:auto; /*bootstrap center-block*/
 	border: none;
 	margin: 0 auto;
 	border-radius: 5px;
 	background-color: #cce6ff;
 	transition: background-color .3s ease-in-out;
 }
-#user:focus {
+
+.greet__input:focus {
 	background-color: #b3daff;
 }
 
