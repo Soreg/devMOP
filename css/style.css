@@ -30,7 +30,11 @@
 
 
 /* Clock styles */
-#hour, #minute, #second {
+.clock__title {
+	text-align: center;
+}
+
+.clock__hour, .clock__minute, .clock__second {
 	opacity: 1;
 	color: black;
 	display: inline;
@@ -38,10 +42,11 @@
 	margin: 0 auto;
 }
 
-#hour,#minute {
+.clock__hour, .clock__minute {
   font-size: 104px;
 }
-#second {
+
+.clock__second {
   font-size: 72px;
 }
 
