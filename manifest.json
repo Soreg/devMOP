@@ -1,29 +1,27 @@
 {
   "manifest_version": 2,
-  "name": "", //decide app name
+  "name": "DevMOP",
   "version": "1.0.1",
-  "default_locale": "en",
-  "description": "turtles-team-1 extension", //decide app description
+  "description": "turtles-team-1 extension - CHANGE",
   "icons": {
-     "64": "" //find an icon
+     "64": "icon.png"
   },
   "browser_action": {
-     "default_icon": "", //find an icon
-     "default_popup": "index.html"
+     "default_icon": "icon.png"
   },
-  
   "background": {
      "persistent": false,
-     "scripts": [""] //decide if we need a separate background file
+     "scripts": ["js/background.js"]
   },
+  "permissions": ["tabs"],
   "web_accessible_resources": ["*.ttf" ],
   "chrome_url_overrides": {
-     "newtab": "index.html"
+     "newtab": "test.html"
   },
   "content_scripts": [
   {
      "matches": ["http://*/*", "https://*/*"],
-     "js": ["assets/js/app.js"]
+     "js": ["/js/app.js"]
   }
   ]
 }
