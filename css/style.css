@@ -5,122 +5,174 @@
 	.block--modifier represents a different state or version of .block
 
  */
+html {
+	min-height: 100%;/* make sure it is at least as tall as the viewport */
+    position: relative;
+	/* background image to cover entire browser window at all times */
+	background: url('https://68.media.tumblr.com/d0914fab2603665235669293d3b61c37/tumblr_os8sx9UAHb1slhhf0o1_1280.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
 
-/* Greet user */
-.greet {
+body {
+	height: 100%; /* force the body element to match the height of the HTML element */
+	font-family: Roboto;
+	color: white;
+}
+
+.sidebar {
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow: scroll;
+    background-color: rgba(17,65,98,0.6);
+	width: 30%;
+	padding: 30px 20px;
 	text-align: center;
 }
 
-.greet_name {
-	opacity: 1;
-	color: black;
-	width: auto;
-	background: none;
-	display: inline;
-	font-size: 2em;
-	font-weight: bold;
+/* Greet user */
+.greet__name {
+	font-size: 1.5rem;
 }
 
 .greet__input {
-	display:block; /*bootstrap center-block*/
-	margin-right:auto; /*bootstrap center-block*/
-	margin-left:auto; /*bootstrap center-block*/
+	display: block;
+	font-size: 1.5rem;
 	border: none;
-	margin: 0 auto;
+	margin: 10px auto 0 auto;
 	border-radius: 5px;
-	background-color: #cce6ff;
+	background-color: #EDF1F3;
 	transition: background-color .3s ease-in-out;
 }
 
 .greet__input:focus {
-	background-color: #b3daff;
+	background-color: #EDF1F3;
+	border: 2px solid #B62929;
+	outline: none;
 }
 
 
 /* Clock styles */
-.clock__title {
-	text-align: center;
+.clock {
+	margin-top: 8%;
+ 	margin-bottom: 8%;
 }
 
 .clock__hour, .clock__minute, .clock__second {
 	opacity: 1;
-	color: black;
 	display: inline;
 	background: none;
 	margin: 0 auto;
 }
 
 .clock__hour, .clock__minute {
-  font-size: 104px;
+  font-size: 4rem;
+  font-weight: 700;
 }
 
 .clock__second {
-  font-size: 72px;
+  font-size: 2.5rem;
 }
 
 
 /* Weather styles */
 .weather {
-  padding-left: 15%;
-  padding-top: 5%;
-  width: 70%;
-  margin-left: 20%;
-  margin-top: 10%;
-  margin-bottom: 5%;
-  background-color: #ffffff;
-  border: 1px solid black;
-  border-radius: 100px;
-  opacity: 0.6;
-  filter: alpha(opacity=60); /* For IE8 and earlier */
+  margin-top: 8%;
+  margin-bottom: 8%;
 }
+
 .weather__loc {
-  margin-left: 15%;
+	font-size: 1.25rem;
 }
-.weather__box {
-  margin-left: 20%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 900;
+
+.weather__temp {
+	font-size: 1.5rem;
+	display: inline-block;
+	margin: 0 10px;
 }
 
 .weather__convert {
-  margin-left: 40%;
+	font-size: 0.75rem;
+	display: inline-block;
+	margin: 0 10px;
 }
 
+.weather__descr {
+	font-size: 0.875rem;
+}
 
 /* Motivation button */
-.article {}
+.article {
+	margin-top: 8%;
+	margin-bottom: 8%;
+}
 
-.article__link:link, visited, hover, active {
+.article__link:link {
+	color: #E7ECEF;
+    text-decoration: none;
+    border-bottom: .08rem solid rgba(231,236,239,.2);
+}
+
+.article__link:hover {
+    text-decoration: none;
+    border-bottom: .08rem solid #BEC2C4;
+    text-shadow: 0 0 1px #BEC2C4;
+}
+
+.article__link:visited, :active {
+	color: #BEC2C4;
 	text-decoration: none;
 }
 
-.article__button {
-  border-radius: 20%;
-  width: 400px;
-  font-size: 18px;
-  margin: 10px;
-  padding: 5px;
+.article__display {
+	padding: 10px 30px;
 }
+
+.article__button {
+   background: #922121;
+   background: -webkit-gradient(linear, left top, left bottom, from(#B62929), to(#922121));
+   background: -webkit-linear-gradient(top, #B62929, #922121);
+   background: -moz-linear-gradient(top, #B62929, #922121);
+   background: -ms-linear-gradient(top, #B62929, #922121);
+   background: -o-linear-gradient(top, #B62929, #922121);
+   padding: 5px 15px;
+   border-radius: 5px;
+   color: white;
+   text-shadow: rgba(0,0,0,.2) 0 1px 0;
+   text-decoration: none;
+}
+
+.article__button:hover {
+   border-top-color: #922121;
+   background: #922121;
+   color: #ccc;
+   }
+.article__button:active {
+   background: #922121;
+   }
 
 
 /* Todo styles */
 .todos {
 	font-family: Roboto;
-	float: left;
-	margin: 0;
-	width: 33%;
+	text-align: left;
+	/** TO FIX: the 3 lines below fix the todos to the bottom, but not working great **/
+	position: absolute;
+    bottom: 5%;
+    width: 90%
+    
 }
 
 .todos__title {
 	background-color: #4c0001;
 	color: white;
 	margin: 0;
-	padding: 10px 20px;
-	text-transform: uppercase;
-	font-size: 24px;
-	font-weight: normal; /*h1 by default is bolded*/
+	padding: 10px 10px;
+	font-size: 0.875rem;
 }
 
 /**TO FIX**/
@@ -129,43 +181,43 @@
 }
 
 .todos__input {
-	font-size: 18px;
-	background-color: #f7f7f7;
+	font-size: 0.75rem;
+	background-color: #E7ECEF;
 	color: #070000;
 	width: 100%; /*100% width includes only the content, not the padding or margin, so we'll use box-sizing below*/
-	padding: 13px 13px 13px 20px;
+	padding: 5px 5px 5px 16px;
 	box-sizing: border-box;
-	border: 3px solid rgba(0,0,0,0);/*an invisile border that will hide a small gap between input and ul that takes up same space as the border when focused*/
+	border: 2px solid rgba(0,0,0,0);/*an invisile border that will hide a small gap between input and ul that takes up same space as the border when focused*/
 }
 
-.todos__input:focus {/*when clicking on box to type*/
-	background: white;
-	border: 3px solid #4c0001;
+.todos__input:focus {
+	background: #EDF1F3;
+	border: 2px solid #B62929;
 	outline: none;/*take off default highlight (when focussing on input box)*/
 }
 
 .todos__ulist {
-	list-style: none;/*get rid of default bullet points*/
+	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
 .todos__list-item {
-	background-color: #fff;
-	height: 40px;
-	line-height: 40px;/*text centered vertically*/
-	color: #666;
+	background-color: #EDF1F3;
+	height: 30px;
+	line-height: 30px;
+	color: #272932;
+	font-size: 0.75rem;
 }
 
 .todos__list-item:nth-child(2n) {
-	background-color: #f7f7f7;
+	background-color: #E7ECEF;
 }
 
 /**TO FIX**/
 .todos span {
-	background-color: #4C0001;
+	background-color: #B62929;
 	color: white;
-	height: 40px;/*needed?*/
 	margin-right: 20px;
 	text-align: center;
 	width: 0;
@@ -174,8 +226,8 @@
 }
 
 /**TO FIX**/
-.todos__list-item:hover span {/*hover over li (since now span is for width: 0px)*/
-	width: 40px;
+.todos__list-item:hover span {/*hover over li (since now span is width: 0px)*/
+	width: 30px;
 	transition: 0.2s linear;
 	opacity: 1.0;/*show icon only when hovering*/
 }
@@ -187,7 +239,13 @@
 
 
 /* Quotes */
-.quote {}
-.quote__text {}
-.quote__author {}
+.quote {
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    right: 40%
+}
 
+.quote__author {
+	text-align: right;
+}
