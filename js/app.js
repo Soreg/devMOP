@@ -4,20 +4,20 @@ var currentHour = new Date().getHours();
 var greetMessage = "Good day";
 
 if(currentHour >= 00 && currentHour < 12 ) {
-    greetMessage = "Good Morning";
+    greetMessage = "Good morning";
 } else if (currentHour >= 12 && currentHour < 17) {
-  greetMessage = "Good Afternoon";
+  greetMessage = "Good afternoon";
 } else if (currentHour >= 17 && currentHour < 24) {
-  greetMessage = "Good Evening";
+  greetMessage = "Good evening";
 }
 
 $(".greet__input").on("keydown",function name(e) {
     if(e.keyCode == 13) {
       var user = this.value;
-      $('.greet_name').fadeOut('normal', function() {
-        $(".greet_name").css("font-style", "italic");
-        $('.greet_name').html(greetMessage + ", " + user);
-        $('.greet_name').fadeIn('normal');
+      $('.greet__name').fadeOut('normal', function() {
+        $(".greet__name").css("font-size", "1.875rem");
+        $('.greet__name').html(greetMessage + ", " + user);
+        $('.greet__name').fadeIn('normal');
       });
     }
 });
@@ -33,12 +33,16 @@ function getTime() {
   var hours = "0" + now.getHours();
 
   //change html clock time
-  document.querySelector('.clock__second').innerHTML = seconds.slice(-2);
-  document.querySelector('.clock__minute').innerHTML = minutes.slice(-2) + " : ";
-  document.querySelector('.clock__hour').innerHTML = hours.slice(-2) + " : ";
+  document.querySelector('.clock__second').innerHTML = ": " + seconds.slice(-2);
+  document.querySelector('.clock__minute').innerHTML = ": " + minutes.slice(-2);
+  document.querySelector('.clock__hour').innerHTML = hours.slice(-2);
 }
 
 setInterval(getTime, 1000);
+
+
+//================== Date ==================
+
 
 
 //================== Weather ==================
@@ -50,19 +54,23 @@ $(document).ready(function() {
       var degC = true;
       //Powered by Dark Sky: https://darksky.net/forecast/32,-5/si24/en
       var URL =
-        "https://crossorigin.me/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/" +
+        "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/" +
         lat +
         "," +
-        lon + '?&units=auto';
+        lon +
+        "?exclude=minutely,hourly,alerts,flags&units=auto";
       $.getJSON(URL, function(data) {
-        var weather = data.currently.summary;
+        console.log(data);
+        var weather = data.daily.data[0].summary; //data.currently.summary;
         var temp = data.currently.temperature;
-        var ID = data.currently.icon;
+        var icon = data.daily.data[0].icon;
+        var maxTemp = data.daily.data[0].temperatureMax;
+        var minTemp = data.daily.data[0].temperatureMin;
         var timezone = data.timezone;
 
         $(".weather__loc").html(timezone);
         $(".weather__temp").html(temp + "°F");
-        $(".weather__descr").html("With: " + weather + " weather");
+        $(".weather__descr").html(weather);
         $(".weather__convert").on("click", function() {
           if (degC === true) {
             degC = false;
@@ -207,10 +215,6 @@ $(".todos__input").keypress(function(event) {
       $(".todos__ulist").append("<li class='todos__list-item'><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
     }
   }
-});
-
-$(".todos .fa-plus").click(function() {
-  $(".todos__input").fadeToggle();
 });
 
 
