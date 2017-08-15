@@ -16,7 +16,7 @@
   "permissions": ["tabs"],
   "web_accessible_resources": ["*.ttf" ],
   "chrome_url_overrides": {
-     "newtab": "test.html"
+     "newtab": "index.html"
   },
   "content_scripts": [
   {
