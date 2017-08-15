@@ -3,10 +3,10 @@
 	.block represents the higher level of an abstraction or component
 	.block__element represents a descendent of .block that helps form .block as a whole
 	.block--modifier represents a different state or version of .block
-
  */
+
 html {
-	min-height: 100%;/* make sure it is at least as tall as the viewport */
+	min-height: 100%;/* at least as tall as the viewport */
     position: relative;
 	/* background image to cover entire browser window at all times */
 	background: url('https://68.media.tumblr.com/d0914fab2603665235669293d3b61c37/tumblr_os8sx9UAHb1slhhf0o1_1280.jpg') no-repeat center center fixed; 
@@ -17,7 +17,7 @@ html {
 }
 
 body {
-	height: 100%; /* force the body element to match the height of the HTML element */
+	height: 100%; /* forces body to match the height of the HTML */
 	font-family: Roboto;
 	color: white;
 }
@@ -30,11 +30,23 @@ body {
     overflow: scroll;
     background-color: rgba(17,65,98,0.6);
 	width: 30%;
-	padding: 30px 20px;
+	padding: 0px 20px;
 	text-align: center;
+		/* flex container that lays out content vertically */
+		display: flex;
+	    min-height: 100%;
+	    flex-direction: column;
+}
+
+.sidebar__top {
+	flex: 1 0 auto; /* expands section to take up all the available space in .sidebar container */
 }
 
 /* Greet user */
+.greet {
+	padding-top: 30px;
+}
+
 .greet__name {
 	font-size: 1.5rem;
 }
@@ -150,21 +162,18 @@ body {
    border-top-color: #922121;
    background: #922121;
    color: #ccc;
-   }
+}
+
 .article__button:active {
    background: #922121;
-   }
-
+}
 
 /* Todo styles */
 .todos {
 	font-family: Roboto;
 	text-align: left;
-	/** TO FIX: the 3 lines below fix the todos to the bottom, but not working great **/
-	position: absolute;
-    bottom: 5%;
-    width: 90%
-    
+    padding-bottom: 30px;
+	flex: none; /* does not expand section to keep it at the bottom of .sidebar container */
 }
 
 .todos__title {
