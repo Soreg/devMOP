@@ -123,7 +123,7 @@ body {
     text-shadow: 0 0 1px #BEC2C4;
 }
 
-.article__link:visited, :active {
+.article__link:visited {
 	color: #BEC2C4;
 	text-decoration: none;
 }
