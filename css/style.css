@@ -9,7 +9,7 @@ html {
 	min-height: 100%;/* at least as tall as the viewport */
     position: relative;
 	/* background image to cover entire browser window at all times */
-	background: url('https://68.media.tumblr.com/d0914fab2603665235669293d3b61c37/tumblr_os8sx9UAHb1slhhf0o1_1280.jpg') no-repeat center center fixed; 
+	background: url('https://68.media.tumblr.com/d0914fab2603665235669293d3b61c37/tumblr_os8sx9UAHb1slhhf0o1_1280.jpg') no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -125,8 +125,9 @@ body {
 
 .article__link:link {
 	color: #E7ECEF;
-    text-decoration: none;
-    border-bottom: .08rem solid rgba(231,236,239,.2);
+  font-style: italic;
+  text-decoration: none;
+  border-bottom: .08rem solid rgba(231,236,239,.2);
 }
 
 .article__link:hover {
@@ -145,27 +146,38 @@ body {
 }
 
 .article__button {
-   background: #922121;
-   background: -webkit-gradient(linear, left top, left bottom, from(#B62929), to(#922121));
-   background: -webkit-linear-gradient(top, #B62929, #922121);
-   background: -moz-linear-gradient(top, #B62929, #922121);
-   background: -ms-linear-gradient(top, #B62929, #922121);
-   background: -o-linear-gradient(top, #B62929, #922121);
-   padding: 5px 15px;
-   border-radius: 5px;
-   color: white;
-   text-shadow: rgba(0,0,0,.2) 0 1px 0;
-   text-decoration: none;
+  width: 80px;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 15px;
+  list-style-type: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 5px;
+  background: #cc0000;
+  -webkit-box-shadow: 0px 5px 12px 8px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 5px 12px 8px rgba(0,0,0,0.75);
+  box-shadow: 0px 1px 3px 2px rgba(0,0,0,0.75);
+  transition: all 0.3s ease-in-out;
+  /* prevent text-selection on button */
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+  -moz-user-select: none; /* mozilla browsers */
+  -khtml-user-select: none; /* webkit (konqueror) browsers */
+  -ms-user-select: none; /* IE10+ */
 }
 
 .article__button:hover {
-   border-top-color: #922121;
-   background: #922121;
-   color: #ccc;
+  background: #990000;
+  color: #e6e6e6;
+  -webkit-box-shadow: inset 0px 1px 3px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: inset 0px 1px 12px 2px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 4px 2px rgba(0,0,0,0.75);
+  border: none;
 }
 
-.article__button:active {
-   background: #922121;
+.article__button:focus {
+  outline:none;
 }
 
 /* Todo styles */
