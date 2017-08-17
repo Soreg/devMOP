@@ -57,27 +57,33 @@ $(document).ready(function() {
         "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/" +
         lat +
         "," +
-        lon +
-        "?exclude=minutely,hourly,alerts,flags&units=auto";
+        lon;
       $.getJSON(URL, function(data) {
-        console.log(data);
         var weather = data.daily.data[0].summary; //data.currently.summary;
         var temp = data.currently.temperature;
         var icon = data.daily.data[0].icon;
         var maxTemp = data.daily.data[0].temperatureMax;
         var minTemp = data.daily.data[0].temperatureMin;
-        var timezone = data.timezone;
-
+        var timezone = data.timezone;    
+          function skycons() {
+            var skycons = new Skycons({"color": "rgba(255, 255, 255, .8)", "resizeClear": true});
+            skycons.add(document.getElementById("clear-day"), icon);
+            skycons.play();
+          }
+          
+          skycons();
+        
         $(".weather__loc").html(timezone);
         $(".weather__temp").html(temp + "°F");
         $(".weather__descr").html(weather);
         $(".weather__convert").on("click", function() {
           if (degC === true) {
             degC = false;
-            $(".weather__temp").html(temp + "\xB0F");
+                        $(".weather__temp").html(temp + "\xB0F");
           } else {
             degC = true;
-            $(".weather__temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
+                        $(".weather__temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
+
           }
         });
       });
@@ -170,6 +176,64 @@ $(document).ready(function() {
         "How I went from zero to San Francisco software engineer in 12 months",
       link:
         "https://medium.freecodecamp.org/how-i-learned-to-code-and-earned-a-job-in-silicon-valley-changing-my-life-along-the-way-a3af854855fa"
+    },
+      {
+      article: "From Zero to Front-end Hero (Part 1)",
+      link:
+        "https://medium.freecodecamp.org/from-zero-to-front-end-hero-part-1-7d4f7f0bff02"
+    },
+    {
+      article:
+        "From Zero to Front-end Hero (Part 2)",
+      link:
+        "https://medium.freecodecamp.org/from-zero-to-front-end-hero-part-2-adfa4824da9b"
+    },
+
+    {
+      article: "12 Free Games to Learn Programming.",
+      link:
+        "https://medium.mybridge.co/12-free-resources-learn-to-code-while-playing-games-f7333043de11"
+    },
+    {
+      article: "15 Web Developer Portfolios to Inspire You",
+      link:
+        "https://medium.freecodecamp.org/15-web-developer-portfolios-to-inspire-you-137fb1743cae"
+    },
+    {
+      article:
+        "How to use spaced repetition with Anki to learn to code faster",
+      link:
+        "https://medium.freecodecamp.org/use-spaced-repetition-with-anki-to-learn-to-code-faster-7c334d448c3c"
+    },
+    {
+      article:
+        "How to be great at asking coding questions",
+      link:
+        "https://medium.com/@gordon_zhu/how-to-be-great-at-asking-questions-e37be04d0603"
+    },
+    {
+      article: "What I learned from turning down a job at Google",
+      link:
+        "https://medium.freecodecamp.org/what-i-learned-from-turning-down-a-job-at-google-b2a36567c31"
+    },
+    {
+      article: "If you are struggling with the FreeCodeCamp Intermediate Projects",
+      link:
+        "https://medium.com/@P1xt/if-you-are-struggling-with-the-freecodecamp-intermediate-projects-9f7fe943601c"
+    },
+    {
+      article: "Why Learning to Code Is Soooo Hard?",
+      link:
+        "https://medium.com/sololearn/why-learning-to-code-is-soooo-hard-3c2372e9d12c"
+    },
+    {
+      article: "Want to master programming? Try this process.",
+      link:
+        "https://medium.com/career-change-coder/want-to-master-programming-think-in-the-language-2c72db300ed5"
+    },{
+      article: "Yet another article on the first dev job",
+      link:
+        "https://medium.com/chingu/yet-another-article-on-the-first-dev-job-c5f14a6ab0"
     }
   ];
   $(".article__button").on("click", function() {
