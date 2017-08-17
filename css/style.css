@@ -111,6 +111,8 @@ body {
 	font-size: 0.75rem;
 	display: inline-block;
 	margin: 0 10px;
+	cursor: pointer; 
+        cursor: hand;
 }
 
 .weather__descr {
