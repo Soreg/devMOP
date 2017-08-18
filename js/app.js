@@ -44,7 +44,6 @@ setInterval(getTime, 1000);
 //================== Date ==================
 
 
-
 //================== Weather ==================
 $(document).ready(function() {
   if (navigator.geolocation) {
@@ -87,7 +86,15 @@ $(document).ready(function() {
           }
         });
       });
-    });
+    },
+    function(failure) {
+      console.log(`PositionError code ${failure.code}, ${failure.message}`);
+    },
+    {
+      enableHighAccuracy: true,
+      timeout: 10000
+    }
+    );
   }
 });
 
