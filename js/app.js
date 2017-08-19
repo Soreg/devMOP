@@ -45,59 +45,92 @@ setInterval(getTime, 1000);
 
 
 //================== Weather ==================
-$(document).ready(function() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(location) {
-      var lat = location.coords.latitude;
-      var lon = location.coords.longitude;
-      var degC = true;
-      //Powered by Dark Sky: https://darksky.net/forecast/32,-5/si24/en
-      var URL =
-        "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/" +
-        lat +
-        "," +
-        lon;
-      $.getJSON(URL, function(data) {
-        var weather = data.daily.data[0].summary; //data.currently.summary;
-        var temp = data.currently.temperature;
-        var icon = data.daily.data[0].icon;
-        var maxTemp = data.daily.data[0].temperatureMax;
-        var minTemp = data.daily.data[0].temperatureMin;
-        var timezone = data.timezone;    
-          function skycons() {
-            var skycons = new Skycons({"color": "rgba(255, 255, 255, .8)", "resizeClear": true});
-            skycons.add(document.getElementById("clear-day"), icon);
-            skycons.play();
-          }
-          
-          skycons();
-        
-        $(".weather__loc").html(timezone);
-        $(".weather__temp").html(temp + "°F");
-        $(".weather__descr").html(weather);
-        $(".weather__convert").on("click", function() {
-          if (degC === true) {
-            degC = false;
-                        $(".weather__temp").html(temp + "\xB0F");
-          } else {
-            degC = true;
-                        $(".weather__temp").html(Math.round((temp - 32) / 1.6) + "\xB0C");
+var tryGeolocation = function() {
+  $(".weather__loc").html("Loading weather...");
 
-          }
-        });
-      });
-    },
-    function(failure) {
-      console.log(`PositionError code ${failure.code}, ${failure.message}`);
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 10000
-    }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      browserGeolocationSuccess,
+      browserGeolocationFail,
+      {maximumAge: 50000, timeout: 20000, enableHighAccuracy: true}
     );
   }
-});
+};
 
+var browserGeolocationSuccess = function(position) {
+  console.log("Browser geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  getWeather(position.coords.latitude, position.coords.longitude);
+};
+
+var browserGeolocationFail = function(error) {
+  switch (error.code) {
+    case error.TIMEOUT:
+      console.log("Browser geolocation error!\nTimeout.");
+      break;
+    case error.PERMISSION_DENIED:
+      if(error.message.indexOf("Only secure origins are allowed") == 0) {
+        tryAPIGeolocation();
+      }
+      break;
+    case error.POSITION_UNAVAILABLE:
+      console.log("Browser geolocation error!\nPosition unavailable.");
+      break;
+  }
+};
+
+var tryAPIGeolocation = function() {
+  let url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC0e9V8BW97nuZwqI2yxnlwOG2OpVLgnE0";
+  $.post(url, function(success) {
+    apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
+    })
+  .fail(function(err) {
+      console.log("API Geolocation error!\n" + err);
+  });
+};
+
+var apiGeolocationSuccess = function(position) {
+  console.log("API geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  getWeather(position.coords.latitude, position.coords.longitude);
+};
+
+var getWeather = function(lat, lon) {
+  //Powered by Dark Sky: https://darksky.net/forecast/32,-5/si24/en
+  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=si`; //&units=si
+  $.getJSON(url)
+    .done(function(data) {
+      let degC;
+      (data.flags.units === 'si') ? degC = true : degC = false;
+      let weather = data.daily.data[0].summary;
+      let temp = data.currently.temperature;
+      let icon = data.daily.data[0].icon;
+      let maxTemp = data.daily.data[0].temperatureMax;
+      let minTemp = data.daily.data[0].temperatureMin;
+      let timezone = data.timezone.split("/");
+      let city = timezone[1];
+      let country = timezone[0];
+      let location = `${city}, ${country}`;
+      //Skycons
+      let skycons = new Skycons({"color": "rgba(255,255,255,0.8)", "resizeClear": true});
+      skycons.add("weather-icon", Skycons[icon.replace(/-/g, '_').toUpperCase()]);
+      skycons.play();
+      //display
+      $(".weather__loc").html(location).css('font-size', '1.25rem');
+      $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
+      $(".weather__descr").html(weather);
+      //conversion C/F
+      $(".weather__convert").on("click", function() {
+        if (degC === true) {
+          degC = false;
+          $(".weather__temp").html(`${(temp * 1.8 + 32).toFixed(1)}&deg;F`);
+        } else {
+          degC = true;
+          $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
+        }
+      })
+  });
+}
+
+tryGeolocation();
 
 //================== Motivation ==================
 
