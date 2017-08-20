@@ -13,12 +13,12 @@ if(currentHour >= 00 && currentHour < 12 ) {
 
 $(".greet__input").on("keydown",function name(e) {
     if(e.keyCode == 13) {
-      var user = this.value;
-      $('.greet__name').fadeOut('normal', function() {
-        $(".greet__name").css("font-size", "1.875rem");
-        $('.greet__name').html(greetMessage + ", " + user);
-        $('.greet__name').fadeIn('normal');
-      });
+		var user = this.value;
+		$('.greet__name').fadeOut('normal', function() {
+			$(".greet__name").css("font-size", "1.875rem");
+			$('.greet__name').html(greetMessage + ", " + user);
+			$('.greet__name').fadeIn('normal');
+		});
     }
 });
 
@@ -79,10 +79,9 @@ var browserGeolocationFail = function(error) {
 };
 
 var tryAPIGeolocation = function() {
-  let url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyC0e9V8BW97nuZwqI2yxnlwOG2OpVLgnE0";
-  $.post(url, function(success) {
-    apiGeolocationSuccess({coords: {latitude: success.location.lat, longitude: success.location.lng}});
-    })
+  $.getJSON('https://ipinfo.io', function(data){
+  	apiGeolocationSuccess({coords: {latitude: data.loc.split(',')[0], longitude: data.loc.split(',')[1]}});
+  })
   .fail(function(err) {
       console.log("API Geolocation error!\n" + err);
   });
@@ -95,7 +94,7 @@ var apiGeolocationSuccess = function(position) {
 
 var getWeather = function(lat, lon) {
   //Powered by Dark Sky: https://darksky.net/forecast/32,-5/si24/en
-  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=si`; //&units=si
+  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=si`; //&units=si //https://cors-anywhere.herokuapp.com/
   $.getJSON(url)
     .done(function(data) {
       let degC;
