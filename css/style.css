@@ -1,9 +1,4 @@
-/* CSS architecture: BEM methodology - Block, Element, Modifier
-
-	.block represents the higher level of an abstraction or component
-	.block__element represents a descendent of .block that helps form .block as a whole
-	.block--modifier represents a different state or version of .block
- */
+/* CSS architecture: BEM methodology - Block, Element, Modifier */
 
 html {
 	min-height: 100%;/* at least as tall as the viewport */
@@ -67,7 +62,6 @@ body {
 	outline: none;
 }
 
-
 /* Clock styles */
 .clock {
 	margin-top: 5%;
@@ -89,7 +83,6 @@ body {
 .clock__second {
 	font-size: 2.5rem;
 }
-
 
 /* Weather styles */
 .weather {
@@ -196,11 +189,6 @@ body {
 	font-size: 0.875rem;
 }
 
-/**TO FIX**/
-.todos .fa-plus {
-	float: right;
-}
-
 .todos__input {
 	font-size: 0.75rem;
 	background-color: #E7ECEF;
@@ -235,8 +223,7 @@ body {
 	background-color: #E7ECEF;
 }
 
-/**TO FIX**/
-.todos span {
+.todos__delete {
 	background-color: #B62929;
 	color: white;
 	margin-right: 20px;
@@ -246,8 +233,7 @@ body {
 	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
 }
 
-/**TO FIX**/
-.todos__list-item:hover span {/*hover over li (since now span is width: 0px)*/
+.todos__list-item:hover .todos__delete {/*hover over li (since now span is width: 0px)*/
 	width: 30px;
 	transition: 0.2s linear;
 	opacity: 1.0;/*show icon only when hovering*/
@@ -257,7 +243,6 @@ body {
 	color: gray;
 	text-decoration: line-through;
 }
-
 
 /* Quotes */
 .quote {
