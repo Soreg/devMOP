@@ -196,11 +196,6 @@ body {
 	font-size: 0.875rem;
 }
 
-/**TO FIX**/
-.todos .fa-plus {
-	float: right;
-}
-
 .todos__input {
 	font-size: 0.75rem;
 	background-color: #E7ECEF;
