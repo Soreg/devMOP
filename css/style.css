@@ -1,9 +1,4 @@
-/* CSS architecture: BEM methodology - Block, Element, Modifier
-
-	.block represents the higher level of an abstraction or component
-	.block__element represents a descendent of .block that helps form .block as a whole
-	.block--modifier represents a different state or version of .block
- */
+/* CSS architecture: BEM methodology - Block, Element, Modifier */
 
 html {
 	min-height: 100%;/* at least as tall as the viewport */
@@ -67,7 +62,6 @@ body {
 	outline: none;
 }
 
-
 /* Clock styles */
 .clock {
 	margin-top: 5%;
@@ -89,7 +83,6 @@ body {
 .clock__second {
 	font-size: 2.5rem;
 }
-
 
 /* Weather styles */
 .weather {
@@ -250,7 +243,6 @@ body {
 	color: gray;
 	text-decoration: line-through;
 }
-
 
 /* Quotes */
 .quote {
