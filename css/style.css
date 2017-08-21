@@ -230,8 +230,7 @@ body {
 	background-color: #E7ECEF;
 }
 
-/**TO FIX**/
-.todos span {
+.todos__delete {
 	background-color: #B62929;
 	color: white;
 	margin-right: 20px;

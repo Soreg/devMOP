@@ -327,7 +327,7 @@ $(".todos__input").keypress(function(event) {
       //clear out input field
       $(this).val("");
       //add new li with user input
-      $(".todos__ulist").append("<li class='todos__list-item'><span><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
+      $(".todos__ulist").append("<li class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
     }
   }
 });
