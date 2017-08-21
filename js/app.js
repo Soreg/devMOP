@@ -280,18 +280,25 @@ $(document).ready(function() {
     var randomArticle = articles[Math.floor(Math.random() * articles.length)];
 
     $('.article__display').fadeTo('normal', 0, function() {
-      $(".article__display")
-        .html('<a class="article__link" target="_blank" href = ' +
-        randomArticle.link +
-        ">" +
-        randomArticle.article +
-        " <i class='fa fa-external-link' aria-hidden='true'></i></a>"
-      );
+      $(".article__display").html(`
+        <span><i class="fa fa-times" aria-hidden="true"></i> </span>
+        <a class="article__link" target="_blank" href="${randomArticle.link}">
+          ${randomArticle.article} <i class='fa fa-external-link' aria-hidden='true'></i>
+        </a>`);
     });
     $('.article__display').fadeTo('normal', 1);
   });
 });
 
+// Click on article's close icon to hide it
+$(".article__display").on("click", "span", function(event) {
+  $(this).parent().fadeOut(function() {
+    //remove link only once the fadeOut finishes
+    $(this).html('');
+  });
+  //stop the event from bubbling up to other elements
+  event.stopPropagation();
+});
 
 //================== Todo ==================
 
