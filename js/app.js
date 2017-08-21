@@ -115,6 +115,7 @@ var getWeather = function(lat, lon) {
       //display
       $(".weather__loc").html(location).css('font-size', '1.25rem');
       $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
+      $(".weather__convert").html("ºC/ºF");
       $(".weather__descr").html(weather);
       //conversion C/F
       $(".weather__convert").on("click", function() {
