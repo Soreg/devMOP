@@ -13,7 +13,10 @@
      "persistent": false,
      "scripts": ["js/background.js"]
   },
-  "permissions": ["tabs"],
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
   "web_accessible_resources": ["*.ttf" ],
   "chrome_url_overrides": {
      "newtab": "index.html"
