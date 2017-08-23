@@ -10,13 +10,19 @@ if(currentHour >= 00 && currentHour < 12 ) {
 } else if (currentHour >= 17 && currentHour < 24) {
   greetMessage = "Good evening";
 }
-
+var user;
+// If there's a name in localStorage, use that..
+if(localStorage.getItem("name") !== null) {
+  $('.greet__name').html(greetMessage + ", " + localStorage.getItem("name"));
+}
 $(".greet__input").on("keydown",function name(e) {
     if(e.keyCode == 13) {
-		var user = this.value;
+		user = this.value;
+    // Set local storage
+    localStorage.setItem( "name", user );
 		$('.greet__name').fadeOut('normal', function() {
-			$(".greet__name").css("font-size", "1.875rem");
-			$('.greet__name').html(greetMessage + ", " + user);
+			//$('.greet__name').html(greetMessage + ", " + user);
+      $('.greet__name').html(greetMessage + ", " + localStorage.getItem("name"));
 			$('.greet__name').fadeIn('normal');
 		});
     }
