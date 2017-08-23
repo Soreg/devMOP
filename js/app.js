@@ -110,7 +110,7 @@ var getWeather = function(lat, lon) {
       let country = timezone[0];
       let location = `${city}, ${country}`;
       //Skycons
-      let skycons = new Skycons({"color": "rgba(255,255,255,0.8)", "resizeClear": true});
+      let skycons = new Skycons({"color": "white", "resizeClear": true});
       skycons.add("weather-icon", Skycons[icon.replace(/-/g, '_').toUpperCase()]);
       skycons.play();
       //display
