@@ -240,6 +240,18 @@ $(document).ready(function() {
     {
       article: "Yet another article on the first dev job",
       link: "https://medium.com/chingu/yet-another-article-on-the-first-dev-job-c5f14a6ab0"
+    },
+    {
+      article: "Want to be Smarter? Learn to Say “I Don’t Know”",
+      link: "https://medium.com/personal-growth/want-to-be-smarter-learn-to-say-i-dont-know-490d02f867ad"
+    },
+    {
+      article: "Why striving for perfection might be holding you back as a newbie web developer",
+      link: "https://medium.freecodecamp.org/why-striving-for-perfection-might-be-holding-you-back-as-a-newbie-web-developer-6e8ae257751f"
+    },
+    {
+      article: "How we brought a new App to life to help web-dev learners — devGaido",
+      link: "https://medium.com/chingu/bringing-a-new-app-to-life-devgaido-54519b63cb06"
     }
   ];
   $(".article__button").on("click", function() {
