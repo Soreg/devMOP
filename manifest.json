@@ -13,7 +13,11 @@
      "persistent": false,
      "scripts": ["js/background.js"]
   },
-  "permissions": ["tabs"],
+  "permissions": [
+    "tabs",
+    "geolocation",
+    "https://api.darksky.net/*"
+  ],
   "web_accessible_resources": ["*.ttf" ],
   "chrome_url_overrides": {
      "newtab": "index.html"
