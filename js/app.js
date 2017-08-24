@@ -65,15 +65,18 @@ var browserGeolocationSuccess = function(position) {
 var browserGeolocationFail = function(error) {
   switch (error.code) {
     case error.TIMEOUT:
-      console.log("Browser geolocation error!\nTimeout.");
+      console.log("Browser geolocation error! Timeout.\nTrying API geolocation...");
+      tryAPIGeolocation();
       break;
     case error.PERMISSION_DENIED:
       if(error.message.indexOf("Only secure origins are allowed") == 0) {
+        console.log("Browser geolocation error! Permission denied.\nTrying API geolocation...");
         tryAPIGeolocation();
       }
       break;
     case error.POSITION_UNAVAILABLE:
-      console.log("Browser geolocation error!\nPosition unavailable.");
+      console.log("Browser geolocation error! Position unavailable.\nTrying API geolocation...");
+      tryAPIGeolocation();
       break;
   }
 };
@@ -83,12 +86,13 @@ var tryAPIGeolocation = function() {
   	apiGeolocationSuccess({coords: {latitude: data.loc.split(',')[0], longitude: data.loc.split(',')[1]}});
   })
   .fail(function(err) {
-      console.log("API Geolocation error!\n" + err);
+      console.log("API Geolocation error! " + err);
+      $(".weather__loc").html("Weather could not be loaded.");
   });
 };
 
 var apiGeolocationSuccess = function(position) {
-  console.log("API geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  console.log("API geolocation success!\nlat = " + position.coords.latitude + " lng = " + position.coords.longitude);
   getWeather(position.coords.latitude, position.coords.longitude);
 };
 
