@@ -90,6 +90,10 @@ body {
 	margin-bottom: 5%;
 }
 
+#weather__loc {
+	margin-bottom: 10px;
+}
+
 #weather-icon {
 	vertical-align: middle;
 }
@@ -98,12 +102,7 @@ body {
 	font-size: 1.5rem;
 	display: inline-block;
 	margin: 0 10px;
-}
-
-.weather__convert {
-	font-size: 0.75rem;
-	display: inline-block;
-	cursor: pointer;
+	vertical-align: text-top;
 }
 
 .weather__descr {
