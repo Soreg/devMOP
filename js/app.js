@@ -10,13 +10,19 @@ if(currentHour >= 00 && currentHour < 12 ) {
 } else if (currentHour >= 17 && currentHour < 24) {
   greetMessage = "Good evening";
 }
-
+var user;
+// If there's a name in localStorage, use that..
+if(localStorage.getItem("name") !== null) {
+  $('.greet__name').html(greetMessage + ", " + localStorage.getItem("name"));
+}
 $(".greet__input").on("keydown",function name(e) {
     if(e.keyCode == 13) {
-		var user = this.value;
+		user = this.value;
+    // Set local storage
+    localStorage.setItem( "name", user );
 		$('.greet__name').fadeOut('normal', function() {
-			$(".greet__name").css("font-size", "1.875rem");
-			$('.greet__name').html(greetMessage + ", " + user);
+			//$('.greet__name').html(greetMessage + ", " + user);
+      $('.greet__name').html(greetMessage + ", " + localStorage.getItem("name"));
 			$('.greet__name').fadeIn('normal');
 		});
     }
@@ -59,22 +65,25 @@ var tryGeolocation = function() {
 };
 
 var browserGeolocationSuccess = function(position) {
-  console.log("Browser geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  console.log("Browser geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude + "\nacc = " + position.coords.accuracy);
   getWeather(position.coords.latitude, position.coords.longitude);
 };
 
 var browserGeolocationFail = function(error) {
   switch (error.code) {
     case error.TIMEOUT:
-      console.log("Browser geolocation error!\nTimeout.");
+      console.log("Browser geolocation error! Timeout.\nTrying API geolocation...");
+      tryAPIGeolocation();
       break;
     case error.PERMISSION_DENIED:
       if(error.message.indexOf("Only secure origins are allowed") == 0) {
+        console.log("Browser geolocation error! Permission denied.\nTrying API geolocation...");
         tryAPIGeolocation();
       }
       break;
     case error.POSITION_UNAVAILABLE:
-      console.log("Browser geolocation error!\nPosition unavailable.");
+      console.log("Browser geolocation error! Position unavailable.\nTrying API geolocation...");
+      tryAPIGeolocation();
       break;
   }
 };
@@ -84,22 +93,22 @@ var tryAPIGeolocation = function() {
   	apiGeolocationSuccess({coords: {latitude: data.loc.split(',')[0], longitude: data.loc.split(',')[1]}});
   })
   .fail(function(err) {
-      console.log("API Geolocation error!\n" + err);
+      console.log("API Geolocation error! " + err);
+      $(".weather__loc").html("Weather could not be loaded.");
   });
 };
 
 var apiGeolocationSuccess = function(position) {
-  console.log("API geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  console.log("API geolocation success!\nlat = " + position.coords.latitude + " lng = " + position.coords.longitude);
   getWeather(position.coords.latitude, position.coords.longitude);
 };
 
 var getWeather = function(lat, lon) {
   //Powered by Dark Sky: https://darksky.net/forecast/32,-5/si24/en
-  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=si`; //&units=si //https://cors-anywhere.herokuapp.com/
+  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=auto`; //https://cors-anywhere.herokuapp.com/
   $.getJSON(url)
     .done(function(data) {
-      let degC;
-      (data.flags.units === 'si') ? degC = true : degC = false;
+      (data.flags.units === 'si'||'ca'||'uk2') ? deg = 'C' : deg = 'F';
       let weather = data.daily.data[0].summary;
       let temp = data.currently.temperature;
       let icon = data.daily.data[0].icon;
@@ -110,24 +119,13 @@ var getWeather = function(lat, lon) {
       let country = timezone[0];
       let location = `${city}, ${country}`;
       //Skycons
-      let skycons = new Skycons({"color": "rgba(255,255,255,0.8)", "resizeClear": true});
+      let skycons = new Skycons({"color": "white", "resizeClear": true});
       skycons.add("weather-icon", Skycons[icon.replace(/-/g, '_').toUpperCase()]);
       skycons.play();
       //display
       $(".weather__loc").html(location).css('font-size', '1.25rem');
-      $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
-      $(".weather__convert").html("ºC/ºF");
+      $(".weather__temp").html(`${temp.toFixed(0)}º${deg}`);
       $(".weather__descr").html(weather);
-      //conversion C/F
-      $(".weather__convert").on("click", function() {
-        if (degC === true) {
-          degC = false;
-          $(".weather__temp").html(`${(temp * 1.8 + 32).toFixed(1)}&deg;F`);
-        } else {
-          degC = true;
-          $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
-        }
-      })
   });
 }
 
@@ -240,6 +238,18 @@ $(document).ready(function() {
     {
       article: "Yet another article on the first dev job",
       link: "https://medium.com/chingu/yet-another-article-on-the-first-dev-job-c5f14a6ab0"
+    },
+    {
+      article: "Want to be Smarter? Learn to Say “I Don’t Know”",
+      link: "https://medium.com/personal-growth/want-to-be-smarter-learn-to-say-i-dont-know-490d02f867ad"
+    },
+    {
+      article: "Why striving for perfection might be holding you back as a newbie web developer",
+      link: "https://medium.freecodecamp.org/why-striving-for-perfection-might-be-holding-you-back-as-a-newbie-web-developer-6e8ae257751f"
+    },
+    {
+      article: "How we brought a new App to life to help web-dev learners — devGaido",
+      link: "https://medium.com/chingu/bringing-a-new-app-to-life-devgaido-54519b63cb06"
     }
   ];
   $(".article__button").on("click", function() {

@@ -15,7 +15,9 @@
   },
   "permissions": [
     "tabs",
-    "storage"
+    "storage",
+    "geolocation",
+    "https://api.darksky.net/*"
   ],
   "web_accessible_resources": ["*.ttf" ],
   "chrome_url_overrides": {
