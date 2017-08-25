@@ -72,15 +72,18 @@ var browserGeolocationSuccess = function(position) {
 var browserGeolocationFail = function(error) {
   switch (error.code) {
     case error.TIMEOUT:
-      console.log("Browser geolocation error!\nTimeout.");
+      console.log("Browser geolocation error! Timeout.\nTrying API geolocation...");
+      tryAPIGeolocation();
       break;
     case error.PERMISSION_DENIED:
       if(error.message.indexOf("Only secure origins are allowed") == 0) {
+        console.log("Browser geolocation error! Permission denied.\nTrying API geolocation...");
         tryAPIGeolocation();
       }
       break;
     case error.POSITION_UNAVAILABLE:
-      console.log("Browser geolocation error!\nPosition unavailable.");
+      console.log("Browser geolocation error! Position unavailable.\nTrying API geolocation...");
+      tryAPIGeolocation();
       break;
   }
 };
@@ -90,12 +93,13 @@ var tryAPIGeolocation = function() {
   	apiGeolocationSuccess({coords: {latitude: data.loc.split(',')[0], longitude: data.loc.split(',')[1]}});
   })
   .fail(function(err) {
-      console.log("API Geolocation error!\n" + err);
+      console.log("API Geolocation error! " + err);
+      $(".weather__loc").html("Weather could not be loaded.");
   });
 };
 
 var apiGeolocationSuccess = function(position) {
-  console.log("API geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  console.log("API geolocation success!\nlat = " + position.coords.latitude + " lng = " + position.coords.longitude);
   getWeather(position.coords.latitude, position.coords.longitude);
 };
 
@@ -116,7 +120,7 @@ var getWeather = function(lat, lon) {
       let country = timezone[0];
       let location = `${city}, ${country}`;
       //Skycons
-      let skycons = new Skycons({"color": "rgba(255,255,255,0.8)", "resizeClear": true});
+      let skycons = new Skycons({"color": "white", "resizeClear": true});
       skycons.add("weather-icon", Skycons[icon.replace(/-/g, '_').toUpperCase()]);
       skycons.play();
       //display
@@ -246,6 +250,18 @@ $(document).ready(function() {
     {
       article: "Yet another article on the first dev job",
       link: "https://medium.com/chingu/yet-another-article-on-the-first-dev-job-c5f14a6ab0"
+    },
+    {
+      article: "Want to be Smarter? Learn to Say “I Don’t Know”",
+      link: "https://medium.com/personal-growth/want-to-be-smarter-learn-to-say-i-dont-know-490d02f867ad"
+    },
+    {
+      article: "Why striving for perfection might be holding you back as a newbie web developer",
+      link: "https://medium.freecodecamp.org/why-striving-for-perfection-might-be-holding-you-back-as-a-newbie-web-developer-6e8ae257751f"
+    },
+    {
+      article: "How we brought a new App to life to help web-dev learners — devGaido",
+      link: "https://medium.com/chingu/bringing-a-new-app-to-life-devgaido-54519b63cb06"
     }
   ];
   $(".article__button").on("click", function() {
