@@ -10,6 +10,7 @@ if(currentHour >= 00 && currentHour < 12 ) {
 } else if (currentHour >= 17 && currentHour < 24) {
   greetMessage = "Good evening";
 }
+
 chrome.storage.sync.get('name', function(item) {
   // if there's a name in storage, use it
   if(item.name) {
@@ -30,15 +31,6 @@ chrome.storage.sync.get('name', function(item) {
     });
   }
 });
-
-
-function onGot(item) {
-  console.log(item);
-}
-
-function onError(error) {
-  console.log(`Error: ${error}`);
-}
 
 
 //================== Clock ==================
