@@ -105,11 +105,10 @@ var apiGeolocationSuccess = function(position) {
 
 var getWeather = function(lat, lon) {
   //Powered by Dark Sky: https://darksky.net/forecast/32,-5/si24/en
-  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=si`; //&units=si //https://cors-anywhere.herokuapp.com/
+  let url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=auto`; //https://cors-anywhere.herokuapp.com/
   $.getJSON(url)
     .done(function(data) {
-      let degC;
-      (data.flags.units === 'si') ? degC = true : degC = false;
+      (data.flags.units === 'si'||'ca'||'uk2') ? deg = 'C' : deg = 'F';
       let weather = data.daily.data[0].summary;
       let temp = data.currently.temperature;
       let icon = data.daily.data[0].icon;
@@ -125,19 +124,8 @@ var getWeather = function(lat, lon) {
       skycons.play();
       //display
       $(".weather__loc").html(location).css('font-size', '1.25rem');
-      $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
-      $(".weather__convert").html("ºC/ºF");
+      $(".weather__temp").html(`${temp.toFixed(0)}º${deg}`);
       $(".weather__descr").html(weather);
-      //conversion C/F
-      $(".weather__convert").on("click", function() {
-        if (degC === true) {
-          degC = false;
-          $(".weather__temp").html(`${(temp * 1.8 + 32).toFixed(1)}&deg;F`);
-        } else {
-          degC = true;
-          $(".weather__temp").html(`${temp.toFixed(0)}&deg;C`);
-        }
-      })
   });
 }
 
