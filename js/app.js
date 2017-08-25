@@ -282,6 +282,15 @@ $(".article__display").on("click", "span", function(event) {
 
 //================== Todo ==================
 
+//Load any existing todos from storage
+chrome.storage.sync.get('todos', function(item) {
+  if(item.todos) {
+    for (i in item.todos) {
+      $(".todos__ulist").append("<li class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + item.todos[i] + " </li>");
+    }
+  }
+});
+
 //Check off specific todos by clicking
 $(".todos__ulist").on("click", ".todos__list-item", function() {
   $(this).toggleClass("todos__list-item--completed");
