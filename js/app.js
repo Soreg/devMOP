@@ -65,7 +65,7 @@ var tryGeolocation = function() {
 };
 
 var browserGeolocationSuccess = function(position) {
-  console.log("Browser geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude);
+  console.log("Browser geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude + "\nacc = " + position.coords.accuracy);
   getWeather(position.coords.latitude, position.coords.longitude);
 };
 
