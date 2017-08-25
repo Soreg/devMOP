@@ -39,8 +39,8 @@ function getTime() {
   var hours = "0" + now.getHours();
 
   //change html clock time
-  document.querySelector('.clock__second').innerHTML = ": " + seconds.slice(-2);
-  document.querySelector('.clock__minute').innerHTML = ": " + minutes.slice(-2);
+  document.querySelector('.clock__second').innerHTML = ":" + seconds.slice(-2);
+  document.querySelector('.clock__minute').innerHTML = ":" + minutes.slice(-2);
   document.querySelector('.clock__hour').innerHTML = hours.slice(-2);
 }
 

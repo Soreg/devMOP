@@ -66,6 +66,7 @@ body {
 .clock {
 	margin-top: 5%;
  	margin-bottom: 5%;
+ 	letter-spacing: 0.1rem;
 }
 
 .clock__hour, .clock__minute, .clock__second {
