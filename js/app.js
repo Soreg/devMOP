@@ -4,29 +4,41 @@ var currentHour = new Date().getHours();
 var greetMessage = "Good day";
 
 if(currentHour >= 00 && currentHour < 12 ) {
-    greetMessage = "Good morning";
+  greetMessage = "Good morning";
 } else if (currentHour >= 12 && currentHour < 17) {
   greetMessage = "Good afternoon";
 } else if (currentHour >= 17 && currentHour < 24) {
   greetMessage = "Good evening";
 }
-var user;
-// If there's a name in localStorage, use that..
-if(localStorage.getItem("name") !== null) {
-  $('.greet__name').html(greetMessage + ", " + localStorage.getItem("name"));
-}
-$(".greet__input").on("keydown",function name(e) {
-    if(e.keyCode == 13) {
-		user = this.value;
-    // Set local storage
-    localStorage.setItem( "name", user );
-		$('.greet__name').fadeOut('normal', function() {
-			//$('.greet__name').html(greetMessage + ", " + user);
-      $('.greet__name').html(greetMessage + ", " + localStorage.getItem("name"));
-			$('.greet__name').fadeIn('normal');
-		});
-    }
+chrome.storage.sync.get('name', function(item) {
+  // if there's a name in storage, use it
+  if(item.name) {
+    $('.greet__name').html(greetMessage + ", " + item.name);
+  } 
+  else {
+    $(".greet__input").on("keydown",function name(e) {
+      if(e.keyCode == 13) {
+      let user = this.value;
+      // set name to storage
+      chrome.storage.sync.set({'name': user});
+      // display name
+      $('.greet__name').fadeOut('normal', function() {
+        $('.greet__name').html(greetMessage + ", " + user);
+        $('.greet__name').fadeIn('normal');
+      });
+      }
+    });
+  }
 });
+
+
+function onGot(item) {
+  console.log(item);
+}
+
+function onError(error) {
+  console.log(`Error: ${error}`);
+}
 
 
 //================== Clock ==================
