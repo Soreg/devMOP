@@ -15,7 +15,7 @@ chrome.storage.sync.get('name', function(item) {
   // if there's a name in storage, use it
   if(item.name) {
     $('.greet__name').html(greetMessage + ", " + item.name);
-  } 
+  }
   else {
     $(".greet__input").on("keydown",function name(e) {
       if(e.keyCode == 13) {
@@ -281,13 +281,18 @@ $(".article__display").on("click", "span", function(event) {
 });
 
 //================== Todo ==================
+// Store todos in array
+var todosArray = [
+
+];
 
 //Load any existing todos from storage
 chrome.storage.sync.get('todos', function(item) {
   if(item.todos) {
     for (i in item.todos) {
-      $(".todos__ulist").append("<li class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + item.todos[i] + " </li>");
+      $(".todos__ulist").append("<li class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + item.todos[i].todo + " </li>");
     }
+    todosArray = item.todos;
   }
 });
 
@@ -313,6 +318,10 @@ $(".todos__input").keypress(function(event) {
     if($(this).val() !== "") {
       //grab new todo text from user input
       var todoText = $(this).val();
+      // Push text to array
+      todosArray.push({todo: todoText});
+      // Save array
+      chrome.storage.sync.set({todos: todosArray})
       //clear out input field
       $(this).val("");
       //add new li with user input
