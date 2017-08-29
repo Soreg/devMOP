@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "DevMOP",
   "version": "1.0.1",
-  "description": "turtles-team-1 extension - CHANGE",
+  "description": "DevMOP, a new tab replacement to help developers in their learning journey stay Motivated, Organised and Productive.",
   "icons": {
      "64": "icon.png"
   },
