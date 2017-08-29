@@ -290,7 +290,7 @@ var todosArray = [
 chrome.storage.sync.get('todos', function(item) {
   if(item.todos) {
     for (i in item.todos) {
-      $(".todos__ulist").append("<li class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + item.todos[i].todo + " </li>");
+      $(".todos__ulist").append(item.todos[i].todo);
     }
     todosArray = item.todos;
   }
@@ -304,8 +304,16 @@ $(".todos__ulist").on("click", ".todos__list-item", function() {
 // Click on icon to delete todo
 $(".todos__ulist").on("click", "span", function(event) {
   $(this).parent().fadeOut(function() {
-    //remove li only once the fadeOut finishes
-    $(this).remove;
+    // Loop through the array
+    for (var i = 0; i < todosArray.length; i++) {
+      // If the ID is a match..
+      if (todosArray[i].todoID === Number(this.id)) {
+        //remove li only once the fadeOut finishes
+        $(this).remove;
+        todosArray.splice(i, 1);
+        chrome.storage.sync.set({todos: todosArray})
+      }
+    }
   });
   //stop the event from bubbling up to other elements
   event.stopPropagation();
@@ -316,20 +324,32 @@ $(".todos__input").keypress(function(event) {
   if (event.which === 13) {
     //make sure text is not empty
     if($(this).val() !== "") {
-      //grab new todo text from user input
-      var todoText = $(this).val();
-      // Push text to array
-      todosArray.push({todo: todoText});
-      // Save array
-      chrome.storage.sync.set({todos: todosArray})
-      //clear out input field
-      $(this).val("");
-      //add new li with user input
-      $(".todos__ulist").append("<li class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + todoText + " </li>");
+      // Initial todoID always starts at 0
+      var todoID = 0;
+      // Loop through all the ID's in the array
+      for (var i = 0; i < todosArray.length; i++) {
+        // If the ID in the array is bigger than / equal to the last ID
+        // note - this way, it finds the max ID in the array
+        if (todosArray[i].todoID >= todoID) {
+          // New ID is 1 number higher than the last ID
+          // Ex if you got ID's (1, 2, 5, 7, 9), the new ID will be 10 (max + 1).
+          todoID = (todosArray[i].todoID + 1);
+        }
+      }
+
+    //grab new todo text from user input
+    var todoText = "<li id=" + todoID + " class='todos__list-item'><span class='todos__delete'><i class='fa fa-trash' aria-hidden='true'></i></span>" + $(this).val() + "</li>";
+    // Push text to array
+    todosArray.push({todo: todoText, todoID});
+    // Save array
+    chrome.storage.sync.set({todos: todosArray});
+    //clear out input field
+    $(this).val("");
+    //add new li with user input
+    $(".todos__ulist").append(todoText);
     }
   }
 });
-
 
 //================== Quotes ==================
 $.ajax({
