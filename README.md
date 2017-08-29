@@ -1,5 +1,5 @@
 # DevMOP
-A Chingu Voyage Build to Learn project to develop a Google Chrome Extension.
+A Chingu Voyage Build to Learn project to develop a Google Chrome Extension.  
 **Currently in development**
 
 ### Description
@@ -11,13 +11,13 @@ It offers a clutter-free space to help you focus on your learning by setting dai
 And all information is synced to your Google Chrome ID so your todo list updates follow you regardless of the computer you use. Now you’re all set to go on your coding journey!
 
 ### Features
-Todo list
-Local weather
-Date and time
-Sync accross computers
-Simple and clean design
-Daily programming quotes
-Beautiful background pictures
+Todo list  
+Local weather  
+Date and time  
+Sync accross computers  
+Simple and clean design  
+Daily programming quotes  
+Beautiful background pictures  
 Growing compilation of motivating articles
 
 Found an issue or like to add a feature? Please submit an [issue](https://github.com/Soreg/devMOP/issues).
