@@ -52,7 +52,23 @@ setInterval(getTime, 1000);
 
 
 //================== Date ==================
+var date = new Date();
+// Set month names
+var month = ["January ", "February ", "March ", "April ", "May ", "June ",
+"July ", "August ", "September ","October ", "November ", "December "];
+// Set day names
+var day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+"Friday", "Saturday"];
 
+// Assign data
+var dateMonth = month[date.getMonth()];
+var dateDay = day[date.getDay()];
+var dateDate = date.getDate();
+var dateString = dateDay + ", " + dateMonth + dateDate;
+console.log(dateString);
+
+// Change html
+$(".date .date__date").html(dateString);
 
 
 //================== Weather ==================
