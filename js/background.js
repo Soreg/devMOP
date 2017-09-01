@@ -1,4 +1,4 @@
 chrome.browserAction.onClicked.addListener(function(activeTab){
-  var newURL = "/test.html";
+  var newURL = "/index.html";
   chrome.tabs.create({ url: newURL });
 });
