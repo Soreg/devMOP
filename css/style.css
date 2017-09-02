@@ -107,6 +107,7 @@ body {
 
 .weather__temp {
 	font-size: 1.5rem;
+	font-weight: 300px;
 	display: inline-block;
 	margin: 0 10px;
 	vertical-align: text-top;
@@ -114,6 +115,7 @@ body {
 
 .weather__descr {
 	font-size: 0.875rem;
+	font-weight: 300px;
 }
 
 /* Motivation button */
@@ -149,6 +151,7 @@ body {
 	text-align: center;
 	margin: 20px auto;
 	font-size: 15px;
+	font-weight: 700px;
 	list-style-type: none;
 	color: white;
 	cursor: pointer;
