@@ -80,8 +80,8 @@ body {
 
 /* Date styles */
 .date__date {
-	margin-top: 0;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
+    letter-spacing: 0.05rem;
 }
 
 /* Weather styles */
@@ -91,7 +91,7 @@ body {
 }
 
 .weather__loc {
-	margin-bottom: 10px;
+	font-size: 0.875rem; /*after initial "loading weather..." message, it resizes to 1.25rem*/
 }
 
 #weather-icon {
@@ -99,8 +99,7 @@ body {
 }
 
 .weather__temp {
-	font-size: 1.5rem;
-	font-weight: 300px;
+	font-size: 1.875rem;
 	display: inline-block;
 	margin: 0 10px;
 	vertical-align: text-top;
@@ -108,7 +107,7 @@ body {
 
 .weather__descr {
 	font-size: 0.875rem;
-	font-weight: 300px;
+	font-weight: 300;
 }
 
 /* Motivation button */
@@ -142,9 +141,9 @@ body {
 .article__button {
 	width: 80px;
 	text-align: center;
-	margin: 20px auto;
-	font-size: 15px;
-	font-weight: 700px;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.05rem;
 	list-style-type: none;
 	color: white;
 	cursor: pointer;
@@ -191,7 +190,8 @@ body {
 }
 
 .todos__input {
-	font-size: 0.75rem;
+	font-family: inherit;
+	font-size: 0.875rem;
 	background-color: #E7ECEF;
 	color: #070000;
 	width: 100%; /*100% width includes only the content, not the padding or margin, so we'll use box-sizing below*/
@@ -217,7 +217,7 @@ body {
 	height: 30px;
 	line-height: 30px;
 	color: #272932;
-	font-size: 0.75rem;
+	font-size: 0.875rem;
 }
 
 .todos__list-item:nth-child(2n) {
@@ -247,6 +247,7 @@ body {
 
 /* Quotes */
 .quote {
+    font-size: 1rem;
     position: absolute;
     bottom: 5%;
     left: 3%;
