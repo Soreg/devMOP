@@ -112,8 +112,8 @@ body {
 
 /* Motivation button */
 .article {
-	margin-top: 8%;
-	margin-bottom: 8%;
+.article__link	{
+	font-size: 0.875rem;
 }
 
 .article__link:link {
