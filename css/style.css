@@ -69,13 +69,6 @@ body {
  	letter-spacing: 0.1rem;
 }
 
-.clock__hour, .clock__minute, .clock__second {
-	opacity: 1;
-	display: inline;
-	background: none;
-	margin: 0 auto;
-}
-
 .clock__hour, .clock__minute {
 	font-size: 4rem;
 	font-weight: 700;
