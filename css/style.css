@@ -181,14 +181,6 @@ body {
 	flex: none; /* does not expand section to keep it at the bottom of .sidebar container */
 }
 
-.todos__title {
-	background-color: #4c0001;
-	color: white;
-	margin: 0;
-	padding: 10px 10px;
-	font-size: 0.875rem;
-}
-
 .todos__input {
 	font-family: inherit;
 	font-size: 0.875rem;
