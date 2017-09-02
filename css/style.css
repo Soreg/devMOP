@@ -13,7 +13,7 @@ html {
 
 body {
 	height: 100%; /* forces body to match the height of the HTML */
-	font-family: Roboto;
+	font-family: 'Encode Sans', sans-serif;
 	color: white;
 }
 
@@ -181,7 +181,6 @@ body {
 
 /* Todo styles */
 .todos {
-	font-family: Roboto;
 	text-align: left;
     padding-bottom: 30px;
 	flex: none; /* does not expand section to keep it at the bottom of .sidebar container */
