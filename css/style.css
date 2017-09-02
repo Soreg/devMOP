@@ -13,7 +13,7 @@ html {
 
 body {
 	height: 100%; /* forces body to match the height of the HTML */
-	font-family: Roboto;
+	font-family: 'Encode Sans', sans-serif;
 	color: white;
 }
 
@@ -22,7 +22,7 @@ body {
     top: 0;
     bottom: 0;
     right: 0;
-    overflow: scroll;
+    overflow: auto;
     background-color: rgba(17,65,98,0.6);
 	width: 30%;
 	padding: 0px 20px;
@@ -69,13 +69,6 @@ body {
  	letter-spacing: 0.1rem;
 }
 
-.clock__hour, .clock__minute, .clock__second {
-	opacity: 1;
-	display: inline;
-	background: none;
-	margin: 0 auto;
-}
-
 .clock__hour, .clock__minute {
 	font-size: 4rem;
 	font-weight: 700;
@@ -86,9 +79,13 @@ body {
 }
 
 /* Date styles */
+.date {
+	margin-bottom: 8%;
+}
+
 .date__date {
-	margin-top: 0;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
+    letter-spacing: 0.05rem;
 }
 
 /* Weather styles */
@@ -98,7 +95,8 @@ body {
 }
 
 .weather__loc {
-	margin-bottom: 10px;
+	font-size: 0.875rem; /*after initial "loading weather..." message, it resizes to 1.25rem*/
+	margin-bottom: 1%;
 }
 
 #weather-icon {
@@ -106,20 +104,25 @@ body {
 }
 
 .weather__temp {
-	font-size: 1.5rem;
+	font-size: 1.875rem;
 	display: inline-block;
-	margin: 0 10px;
-	vertical-align: text-top;
+	margin: 0;
 }
 
 .weather__descr {
 	font-size: 0.875rem;
+	font-weight: 300;
+	margin-top: 1%;
 }
 
 /* Motivation button */
 .article {
-	margin-top: 8%;
-	margin-bottom: 8%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.article__link	{
+	font-size: 0.875rem;
 }
 
 .article__link:link {
@@ -141,19 +144,21 @@ body {
 }
 
 .article__display {
-	padding: 10px 30px;
+	padding: 1.5% 2%;
 }
 
 .article__button {
-	width: 80px;
+	width: 20%;
 	text-align: center;
-	margin: 20px auto;
-	font-size: 15px;
+	margin: 2% auto;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.05rem;
 	list-style-type: none;
 	color: white;
 	cursor: pointer;
-	padding: 8px 10px;
-	border-radius: 5px;
+	padding: 1.3% 2%;
+	border-radius: 5%;
 	background: #cc0000;
 	-webkit-box-shadow: 0px 5px 12px 8px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 5px 12px 8px rgba(0,0,0,0.75);
@@ -181,22 +186,14 @@ body {
 
 /* Todo styles */
 .todos {
-	font-family: Roboto;
 	text-align: left;
-    padding-bottom: 30px;
+    padding-bottom: 5%;
 	flex: none; /* does not expand section to keep it at the bottom of .sidebar container */
 }
 
-.todos__title {
-	background-color: #4c0001;
-	color: white;
-	margin: 0;
-	padding: 10px 10px;
-	font-size: 0.875rem;
-}
-
 .todos__input {
-	font-size: 0.75rem;
+	font-family: inherit;
+	font-size: 0.875rem;
 	background-color: #E7ECEF;
 	color: #070000;
 	width: 100%; /*100% width includes only the content, not the padding or margin, so we'll use box-sizing below*/
@@ -219,10 +216,10 @@ body {
 
 .todos__list-item {
 	background-color: #EDF1F3;
-	height: 30px;
-	line-height: 30px;
+	height: 2rem;
+	line-height: 2rem;
 	color: #272932;
-	font-size: 0.75rem;
+	font-size: 0.875rem;
 }
 
 .todos__list-item:nth-child(2n) {
@@ -252,6 +249,7 @@ body {
 
 /* Quotes */
 .quote {
+    font-size: 1rem;
     position: absolute;
     bottom: 5%;
     left: 3%;
