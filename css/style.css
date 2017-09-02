@@ -69,7 +69,7 @@ body {
  	letter-spacing: 0.1rem;
 }
 
-.clock__hour, .clock__minute {
+.clock__hour-minute {
 	font-size: 4rem;
 	font-weight: 700;
 }
