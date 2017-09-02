@@ -65,7 +65,6 @@ var dateMonth = month[date.getMonth()];
 var dateDay = day[date.getDay()];
 var dateDate = date.getDate();
 var dateString = dateDay + ", " + dateMonth + dateDate;
-console.log(dateString);
 
 // Change html
 $(".date .date__date").html(dateString);
