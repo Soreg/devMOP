@@ -41,11 +41,11 @@ function getTime() {
   var seconds = "0" + now.getSeconds();
   var minutes = "0" + now.getMinutes();
   var hours = "0" + now.getHours();
+  var hourminuteString = `${hours.slice(-2)}:${minutes.slice(-2)}`;
 
   //change html clock time
+  document.querySelector('.clock__hour-minute').innerHTML = hourminuteString;
   document.querySelector('.clock__second').innerHTML = ":" + seconds.slice(-2);
-  document.querySelector('.clock__minute').innerHTML = ":" + minutes.slice(-2);
-  document.querySelector('.clock__hour').innerHTML = hours.slice(-2);
 }
 
 setInterval(getTime, 1000);
