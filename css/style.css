@@ -4,7 +4,7 @@ html {
 	min-height: 100%;/* at least as tall as the viewport */
     position: relative;
 	/* background image to cover entire browser window at all times */
-	background: url('https://68.media.tumblr.com/d0914fab2603665235669293d3b61c37/tumblr_os8sx9UAHb1slhhf0o1_1280.jpg') no-repeat center center fixed;
+	background: url() no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -250,7 +250,8 @@ body {
 
 /* Quotes */
 .quote {
-    font-size: 1rem;
+	font-size: 1rem;
+	text-shadow: 0.5px 0.5px 0.1rem #070000, 0px 0px 0.5rem #070000;
     position: absolute;
     bottom: 5%;
     left: 3%;
