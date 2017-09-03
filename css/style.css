@@ -106,7 +106,8 @@ body {
 .weather__temp {
 	font-size: 1.875rem;
 	display: inline-block;
-	margin: 0;
+	margin: 0 2%;
+	vertical-align: middle;
 }
 
 .weather__descr {
