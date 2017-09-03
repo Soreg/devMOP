@@ -250,7 +250,8 @@ body {
 
 /* Quotes */
 .quote {
-    font-size: 1rem;
+	font-size: 1rem;
+	text-shadow: 0.5px 0.5px 0.1rem #070000, 0px 0px 0.5rem #070000;
     position: absolute;
     bottom: 5%;
     left: 3%;
