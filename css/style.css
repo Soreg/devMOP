@@ -248,6 +248,21 @@ body {
 	text-decoration: line-through;
 }
 
+/* Weather API attribution */
+.attribution {
+	font-size: 0.625rem;
+    font-style: italic;
+	text-decoration: none;
+	text-align: right;
+	color: rgba(231, 236, 239, 0.7);
+	margin-bottom: 1%;
+}
+
+.attribution:visited {
+	text-decoration: none;
+    color: rgba(231, 236, 239, 0.4);
+}
+
 /* Quotes */
 .quote {
 	font-size: 1rem;
