@@ -99,6 +99,7 @@ var tryGeolocation = function() {
 
 var browserGeolocationSuccess = function(position) {
   console.log("Browser geolocation success!\nlat = " + position.coords.latitude + "\nlng = " + position.coords.longitude + "\nacc = " + position.coords.accuracy);
+  getAddress(position.coords.latitude, position.coords.longitude);
   getWeather(position.coords.latitude, position.coords.longitude);
 };
 
@@ -133,7 +134,33 @@ var tryAPIGeolocation = function() {
 
 var apiGeolocationSuccess = function(position) {
   console.log("API geolocation success!\nlat = " + position.coords.latitude + " lng = " + position.coords.longitude);
+  getAddress(position.coords.latitude, position.coords.longitude);
   getWeather(position.coords.latitude, position.coords.longitude);
+};
+
+var getAddress = function(lat, lon) {
+  let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&result_type=premise|locality&key=AIzaSyC4h5g3Zh1xT2ytDJtzKh5x4dCsXzhGf0U`;
+  $.getJSON(url)
+    .done(function(data) {
+      if (data.status == "OK") {
+        let address = data.results[0];
+        console.log("Address found = " + address.formatted_address);
+        let city = '';
+        let country = '';
+        //iterate through address_components to find locality and country
+        for (let component of address.address_components) {
+          if (component.types.indexOf("locality") != -1) {city = component.long_name;}
+          if (component.types.indexOf("country") != -1) {country = component.long_name;}
+        }
+        let location = `${city}, ${country}`;
+        //display
+        $(".weather__loc").html(location).css('font-size', '1.25rem');
+      } else {
+        console.log("No address found");
+        //If error, replace "Loading weather..." message by empty location
+        $(".weather__loc").html("");
+      }
+    });
 };
 
 var getWeather = function(lat, lon) {
@@ -148,15 +175,11 @@ var getWeather = function(lat, lon) {
       let maxTemp = data.daily.data[0].temperatureMax;
       let minTemp = data.daily.data[0].temperatureMin;
       let timezone = data.timezone.split("/");
-      let city = timezone[1];
-      let country = timezone[0];
-      let location = `${city}, ${country}`;
       //Skycons
       let skycons = new Skycons({"color": "white", "resizeClear": true});
       skycons.add("weather-icon", Skycons[icon.replace(/-/g, '_').toUpperCase()]);
       skycons.play();
       //display
-      $(".weather__loc").html(location).css('font-size', '1.25rem');
       $(".weather__temp").html(`${temp.toFixed(0)}º${deg}`);
       $(".weather__descr").html(weather);
   });
