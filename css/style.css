@@ -1,0 +1,278 @@
+/* CSS architecture: BEM methodology - Block, Element, Modifier */
+
+html {
+	min-height: 100%;/* at least as tall as the viewport */
+    position: relative;
+	/* background image to cover entire browser window at all times */
+	background: url() no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+body {
+	height: 100%; /* forces body to match the height of the HTML */
+	font-family: 'Encode Sans', sans-serif;
+	color: white;
+}
+
+.sidebar {
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+    background-color: rgba(17,65,98,0.6);
+	width: 30%;
+	padding: 0px 20px;
+	text-align: center;
+		/* flex container that lays out content vertically */
+		display: flex;
+	    min-height: 100%;
+	    flex-direction: column;
+}
+
+.sidebar__top {
+	flex: 1 0 auto; /* expands section to take up all the available space in .sidebar container */
+}
+
+/* Greet user */
+.greet {
+	padding-top: 30px;
+}
+
+.greet__name {
+	font-size: 1.875rem;
+}
+
+.greet__input {
+	display: block;
+	font-size: 1.5rem;
+	border: none;
+	margin: 10px auto 0 auto;
+	border-radius: 5px;
+	background-color: #EDF1F3;
+	transition: background-color .3s ease-in-out;
+}
+
+.greet__input:focus {
+	background-color: #EDF1F3;
+	border: 2px solid #B62929;
+	outline: none;
+}
+
+/* Clock styles */
+.clock {
+	margin-top: 5%;
+ 	margin-bottom: 0;
+ 	letter-spacing: 0.1rem;
+}
+
+.clock__hour-minute {
+	font-size: 4rem;
+	font-weight: 700;
+}
+
+.clock__second {
+	font-size: 2.5rem;
+}
+
+/* Date styles */
+.date {
+	margin-bottom: 8%;
+}
+
+.date__date {
+	font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+
+/* Weather styles */
+.weather {
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.weather__loc {
+	font-size: 0.875rem; /*after initial "loading weather..." message, it resizes to 1.25rem*/
+	margin-bottom: 1%;
+}
+
+#weather-icon {
+	vertical-align: middle;
+}
+
+.weather__temp {
+	font-size: 1.875rem;
+	display: inline-block;
+	margin: 0 2%;
+	vertical-align: middle;
+}
+
+.weather__descr {
+	font-size: 0.875rem;
+	font-weight: 300;
+	margin-top: 1%;
+}
+
+/* Motivation button */
+.article {
+	margin-top: 10%;
+	margin-bottom: 5%;
+}
+
+.article__link	{
+	font-size: 0.875rem;
+}
+
+.article__link:link {
+	color: #E7ECEF;
+	font-style: italic;
+	text-decoration: none;
+	border-bottom: .08rem solid rgba(231,236,239,.2);
+}
+
+.article__link:hover {
+    text-decoration: none;
+    border-bottom: .08rem solid #BEC2C4;
+    text-shadow: 0 0 1px #BEC2C4;
+}
+
+.article__link:visited {
+	color: #BEC2C4;
+	text-decoration: none;
+}
+
+.article__display {
+	padding: 1.5% 2%;
+}
+
+.article__button {
+	width: 20%;
+	text-align: center;
+	margin: 2% auto;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 0.05rem;
+	list-style-type: none;
+	color: white;
+	cursor: pointer;
+	padding: 1.3% 2%;
+	border-radius: 5%;
+	background: #cc0000;
+	-webkit-box-shadow: 0px 5px 12px 8px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 5px 12px 8px rgba(0,0,0,0.75);
+	box-shadow: 0px 1px 3px 2px rgba(0,0,0,0.75);
+	transition: all 0.3s ease-in-out;
+	/* prevent text-selection on button */
+	-webkit-user-select: none; /* webkit (safari, chrome) browsers */
+	-moz-user-select: none; /* mozilla browsers */
+	-khtml-user-select: none; /* webkit (konqueror) browsers */
+	-ms-user-select: none; /* IE10+ */
+}
+
+.article__button:hover {
+	background: #990000;
+	color: #e6e6e6;
+	-webkit-box-shadow: inset 0px 1px 3px 2px rgba(0,0,0,0.75);
+	-moz-box-shadow: inset 0px 1px 12px 2px rgba(0,0,0,0.75);
+	box-shadow: inset 0px 0px 4px 2px rgba(0,0,0,0.75);
+	border: none;
+}
+
+.article__button:focus {
+  outline:none;
+}
+
+/* Todo styles */
+.todos {
+	text-align: left;
+    padding-bottom: 5%;
+	flex: none; /* does not expand section to keep it at the bottom of .sidebar container */
+}
+
+.todos__input {
+	font-family: inherit;
+	font-size: 0.875rem;
+	background-color: #E7ECEF;
+	color: #070000;
+	width: 100%; /*100% width includes only the content, not the padding or margin, so we'll use box-sizing below*/
+	padding: 5px 5px 5px 16px;
+	box-sizing: border-box;
+	border: 2px solid rgba(0,0,0,0);/*an invisile border that will hide a small gap between input and ul that takes up same space as the border when focused*/
+}
+
+.todos__input:focus {
+	background: #EDF1F3;
+	border: 2px solid #B62929;
+	outline: none;/*take off default highlight (when focussing on input box)*/
+}
+
+.todos__ulist {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.todos__list-item {
+	background-color: #EDF1F3;
+	height: 2rem;
+	line-height: 2rem;
+	color: #272932;
+	font-size: 0.875rem;
+}
+
+.todos__list-item:nth-child(2n) {
+	background-color: #E7ECEF;
+}
+
+.todos__delete {
+	background-color: #B62929;
+	color: white;
+	margin-right: 20px;
+	text-align: center;
+	width: 0;
+	display: inline-block;
+	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
+}
+
+.todos__list-item:hover .todos__delete {/*hover over li (since now span is width: 0px)*/
+	width: 30px;
+	transition: 0.2s linear;
+	opacity: 1.0;/*show icon only when hovering*/
+}
+
+.todos__list-item--completed {
+	color: gray;
+	text-decoration: line-through;
+}
+
+/* Weather API attribution */
+.attribution {
+	font-size: 0.625rem;
+    font-style: italic;
+	text-decoration: none;
+	text-align: right;
+	color: rgba(231, 236, 239, 0.7);
+	margin-bottom: 1%;
+}
+
+.attribution:visited {
+	text-decoration: none;
+    color: rgba(231, 236, 239, 0.4);
+}
+
+/* Quotes */
+.quote {
+	font-size: 1rem;
+	text-shadow: 0.5px 0.5px 0.1rem #070000, 0px 0px 0.5rem #070000;
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    right: 40%
+}
+
+.quote__author {
+	text-align: right;
+}

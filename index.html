@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DevMOP</title>
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans:300,400,600" rel="stylesheet">
+  <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css">
+
+</head>
+<body>
+
+<div class="sidebar">
+
+  <div class="sidebar__top">
+
+    <!-- Greet user + name -->
+    <div class="greet">
+      <span class="greet__name">What is your name: <input class="greet__input" type="text"></span>
+    </div>
+
+    <!-- Clock -->
+    <div class="clock">
+      <span class="clock__hour-minute"></span>
+      <span class="clock__second"></span>
+    </div>
+
+  <!-- Date -->
+  <div class="date">
+    <span class="date__date"></span>
+  </div>
+
+   <!-- Weather -->
+    <div class="weather">
+      <p class="weather__loc"></p>
+      <canvas id="weather-icon" width="50" height="50"></canvas>
+      <p class="weather__temp"></p>
+      <p class="weather__descr"></p>
+    </div>
+
+    <!-- Motivation button -->
+    <div class="article">
+      <li class="article__button">Inspire me!</li>
+      <div class="article__display"></div>
+    </div>
+
+  </div><!--/.sidebar__top-->
+
+  <!-- Todo -->
+  <div class="todos">
+    <input class="todos__input" type="text" placeholder="What's up for today?">
+    <ul class="todos__ulist"></ul>
+  </div>
+
+  <!-- Darksky attribution -->
+  <a class="attribution" href="https://darksky.net/poweredby/" target="_blank">Weather forecast powered by Dark Sky</a>
+
+</div><!--/.sidebar-->
+
+  <!-- Quotes -->
+  <div class="quote">
+    <div class="quote__text"></div>
+    <div class="quote__author"></div>
+  </div>
+
+  <!--JQuery-->
+  <script type="text/javascript" src="js/lib/jquery-3.2.1.min.js"></script>
+  <!--Skycons-->
+  <script type="text/javascript" src="js/lib/skycons.js"></script>
+  <!--Theme JavaScript-->
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
