@@ -336,7 +336,7 @@ $(document).ready(function() {
     //display article
     $('.article__display').fadeTo('normal', 0, function() {
       $('.article__display').html(`
-        <span><i class="fa fa-times" aria-hidden="true"></i> </span>
+        <span class="article__delete"><i class="fa fa-times fa-lg" aria-hidden="true"></i> </span>
         <a class="article__link" target="_blank" href="${randomArticle.link}">
           ${randomArticle.article} <i class='fa fa-external-link' aria-hidden='true'></i>
         </a>`);
