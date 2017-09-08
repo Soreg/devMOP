@@ -40,6 +40,7 @@ body {
 /* Greet user */
 .greet {
 	padding-top: 30px;
+	min-height: 50px;
 }
 
 .greet__name {
@@ -67,6 +68,7 @@ body {
 	margin-top: 5%;
  	margin-bottom: 0;
  	letter-spacing: 0.1rem;
+	min-height: 80px;
 }
 
 .clock__hour-minute {
@@ -81,6 +83,7 @@ body {
 /* Date styles */
 .date {
 	margin-bottom: 8%;
+	min-height: 20px;
 }
 
 .date__date {
@@ -92,6 +95,7 @@ body {
 .weather {
 	margin-top: 5%;
 	margin-bottom: 5%;
+	min-height: 100px;
 }
 
 .weather__loc {
