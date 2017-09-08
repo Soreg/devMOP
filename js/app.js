@@ -168,13 +168,18 @@ var getWeather = function(lat, lon) {
   let url = `https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts`; //https://cors-anywhere.herokuapp.com/
   $.getJSON(url)
     .done(function(data) {
-      (data.flags.units === 'si'||'ca'||'uk2') ? deg = 'C' : deg = 'F';
       let weather = data.daily.data[0].summary;
       let temp = data.currently.temperature;
       let icon = data.daily.data[0].icon;
       let maxTemp = data.daily.data[0].temperatureMax;
       let minTemp = data.daily.data[0].temperatureMin;
       let timezone = data.timezone.split("/");
+      if(data.flags.units === 'si'||'ca'||'uk2') {
+        temp = (temp - 32) * (5/9);
+        deg = 'C';
+      } else {
+        deg = 'F';
+      }
       //Skycons
       let skycons = new Skycons({"color": "white", "resizeClear": true});
       skycons.add("weather-icon", Skycons[icon.replace(/-/g, '_').toUpperCase()]);
