@@ -19,7 +19,8 @@
     "tabs",
     "storage",
     "geolocation",
-    "https://api.darksky.net/*"
+    "https://api.darksky.net/*",
+    "<all_urls>"
   ],
   "web_accessible_resources": ["*.ttf" ],
   "chrome_url_overrides": {
