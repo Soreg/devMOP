@@ -189,6 +189,20 @@ body {
   outline:none;
 }
 
+.article__delete {
+	color: #990000;
+    text-shadow: 0px 0px 0.1rem #EDF1F3;
+    margin-right: 2px;
+    display: inline-block;
+    vertical-align: top;
+	opacity: 0;
+	transition: 0.2s linear;
+}
+
+.article__display:hover .article__delete {
+	opacity: 1;
+}
+
 /* Todo styles */
 .todos {
 	text-align: left;
