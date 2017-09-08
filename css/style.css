@@ -253,11 +253,11 @@ body {
 	width: 0;
 	display: inline-block;
 	opacity: 0;/*hide trash icon (still slightly visible when we don't hover over li)*/
+	transition: 0.2s linear;
 }
 
 .todos__list-item:hover .todos__delete {/*hover over li (since now span is width: 0px)*/
 	width: 30px;
-	transition: 0.2s linear;
 	opacity: 1.0;/*show icon only when hovering*/
 }
 
