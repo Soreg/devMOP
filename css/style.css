@@ -153,7 +153,7 @@ body {
 }
 
 .article__button {
-	width: 20%;
+	width: fit-content;
 	text-align: center;
 	margin: 2% auto;
 	font-size: 1rem;
