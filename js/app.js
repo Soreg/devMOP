@@ -252,12 +252,8 @@ $(document).ready(function() {
       link: "https://medium.freecodecamp.org/how-i-learned-to-code-and-earned-a-job-in-silicon-valley-changing-my-life-along-the-way-a3af854855fa"
     },
     {
-      article: "From Zero to Front-end Hero (Part 1)",
+      article: "From Zero to Front-end Hero",
       link: "https://medium.freecodecamp.org/from-zero-to-front-end-hero-part-1-7d4f7f0bff02"
-    },
-    {
-      article: "From Zero to Front-end Hero (Part 2)",
-      link: "https://medium.freecodecamp.org/from-zero-to-front-end-hero-part-2-adfa4824da9b"
     },
     {
       article: "12 Free Games to Learn Programming.",
