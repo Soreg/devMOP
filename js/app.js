@@ -302,6 +302,18 @@ $(document).ready(function() {
     {
       article: "How we brought a new App to life to help web-dev learners — devGaido",
       link: "https://medium.com/chingu/bringing-a-new-app-to-life-devgaido-54519b63cb06"
+    },
+    {
+      article: "Voyaging to a new level. Destination….. Lost and Found",
+      link: "https://medium.com/chingu/voyaging-to-a-new-level-destination-lost-and-found-3ee0cf4daf6a"
+    },
+    {
+      article: "I wanted real time GitHub push notifications. So I built a Chrome extension",
+      link: "https://medium.freecodecamp.org/i-wanted-real-time-github-push-notifications-so-i-built-a-chrome-extension-7e6be0611e4"
+    },
+    {
+      article: "How I replicated an $86 million project in 57 lines of code",
+      link: "https://medium.freecodecamp.org/how-i-replicated-an-86-million-project-in-57-lines-of-code-277031330ee9"
     }
   ];
   $(".article__button").on("click", function() {
