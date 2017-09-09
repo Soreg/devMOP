@@ -1,17 +1,32 @@
 //================== Background images ==================
 $(document).ready(function() {
+
+  var imagesUrl = "http://www.sgcoding.media/devMOP-images/";
   var images = [
     '001.jpg','002.jpg','003.jpg','004.jpg','005.jpg','006.jpg','007.jpg','008.jpg','009.jpg','010.jpg',
     '011.jpg','012.jpg','013.jpg','014.jpg','015.jpg','016.jpg','017.jpg','018.jpg','019.jpg','020.jpg',
     '021.jpg','022.jpg','023.jpg','024.jpg','025.jpg','026.jpg','027.jpg','028.jpg','029.jpg','030.jpg',
     '031.jpg','032.jpg','033.jpg','034.jpg','035.jpg','036.jpg','037.jpg','038.jpg','039.jpg','040.jpg',
-    '041.jpg','042.jpg','043.jpg','044.jpg','045.jpg','046.jpg','047.jpg','048.jpg','049.jpg','050.jpg',
-    '051.jpg',
+    '041.jpg','042.jpg','043.jpg','044.jpg','045.jpg','046.jpg','047.jpg','048.jpg','049.jpg'
   ];
   var randomImage = images[Math.floor(Math.random()*images.length)];
+  var imagePath = imagesUrl + randomImage;
+
+  var remoteImage,
+    container = document.querySelector('.sidebar'),
+    toLoad = { 'images': [
+       imagePath, ] }; // list of image URLs
+
+  toLoad.images.forEach(function(imageToLoad) {
+        remoteImage = new RAL.RemoteImage(imageToLoad);
+        container.appendChild(remoteImage.element);
+        RAL.Queue.add(remoteImage);
+  });
   //display image
-  $('html').css('background-image', `url(/bg-images/${randomImage})`);
+  $('html').css('background-image', 'url(' + imagePath + ')');
 });
+RAL.Queue.setMaxConnections(4);
+RAL.Queue.start();
 
 //================== Greet user ==================
 var currentHour = new Date().getHours();
@@ -168,7 +183,7 @@ var getWeather = function(lat, lon) {
   let url = `https://api.darksky.net/forecast/aa9c777240c7de062ffdd1bbdb29b3ea/${lat},${lon}?exclude=minutely,hourly,alerts&units=auto`; //https://cors-anywhere.herokuapp.com/
   $.getJSON(url)
     .done(function(data) {
-      (data.flags.units === 'si'||'ca'||'uk2') ? deg = 'C' : deg = 'F';
+      (data.flags.units === ('si'||'ca'||'uk2')) ? deg = 'C' : deg = 'F';
       let weather = data.daily.data[0].summary;
       let temp = data.currently.temperature;
       let icon = data.daily.data[0].icon;
@@ -252,12 +267,8 @@ $(document).ready(function() {
       link: "https://medium.freecodecamp.org/how-i-learned-to-code-and-earned-a-job-in-silicon-valley-changing-my-life-along-the-way-a3af854855fa"
     },
     {
-      article: "From Zero to Front-end Hero (Part 1)",
+      article: "From Zero to Front-end Hero",
       link: "https://medium.freecodecamp.org/from-zero-to-front-end-hero-part-1-7d4f7f0bff02"
-    },
-    {
-      article: "From Zero to Front-end Hero (Part 2)",
-      link: "https://medium.freecodecamp.org/from-zero-to-front-end-hero-part-2-adfa4824da9b"
     },
     {
       article: "12 Free Games to Learn Programming.",
@@ -306,6 +317,18 @@ $(document).ready(function() {
     {
       article: "How we brought a new App to life to help web-dev learners — devGaido",
       link: "https://medium.com/chingu/bringing-a-new-app-to-life-devgaido-54519b63cb06"
+    },
+    {
+      article: "Voyaging to a new level. Destination….. Lost and Found",
+      link: "https://medium.com/chingu/voyaging-to-a-new-level-destination-lost-and-found-3ee0cf4daf6a"
+    },
+    {
+      article: "I wanted real time GitHub push notifications. So I built a Chrome extension",
+      link: "https://medium.freecodecamp.org/i-wanted-real-time-github-push-notifications-so-i-built-a-chrome-extension-7e6be0611e4"
+    },
+    {
+      article: "How I replicated an $86 million project in 57 lines of code",
+      link: "https://medium.freecodecamp.org/how-i-replicated-an-86-million-project-in-57-lines-of-code-277031330ee9"
     }
   ];
   $(".article__button").on("click", function() {
@@ -313,7 +336,7 @@ $(document).ready(function() {
     //display article
     $('.article__display').fadeTo('normal', 0, function() {
       $('.article__display').html(`
-        <span><i class="fa fa-times" aria-hidden="true"></i> </span>
+        <span class="article__delete"><i class="fa fa-times fa-lg" aria-hidden="true"></i> </span>
         <a class="article__link" target="_blank" href="${randomArticle.link}">
           ${randomArticle.article} <i class='fa fa-external-link' aria-hidden='true'></i>
         </a>`);
